@@ -5,8 +5,8 @@
     <description>Blog about Software on Bilingual-Turkish and English.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 Mar 2020 18:10:01 +0200</pubDate>
-    <lastBuildDate>Sat, 21 Mar 2020 18:10:01 +0200</lastBuildDate>
+    <pubDate>Sat, 21 Mar 2020 18:14:21 +0200</pubDate>
+    <lastBuildDate>Sat, 21 Mar 2020 18:14:21 +0200</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -206,11 +206,11 @@ So, curl configures the method name behind the -X option. In this perspective, t
 
 &lt;p&gt;I’m sure that the majority gives the following answer (even an ordinary citizen who has no interested in the software).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://dgempiuc.github.io/images/posts/code1.png&quot; alt=&quot;code-1&quot; title=&quot;Code 1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/code1.png&quot; alt=&quot;code-1&quot; title=&quot;Code 1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This code doesn’t give any information about your programming level, But, it shows that you are not following the enhancements in the language you are using. What about the following one?&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://dgempiuc.github.io/images/posts/code2.png&quot; alt=&quot;code-2&quot; title=&quot;Code 2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/code2.png&quot; alt=&quot;code-2&quot; title=&quot;Code 2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Writing code requires a great technical knowledge as well as ability. When I look at the code above, I see the existence of technical information such as Collections, Stream API &amp;amp;&amp;amp; Lambda Expressions and Unboxing.&lt;/p&gt;
 
@@ -232,12 +232,12 @@ So, curl configures the method name behind the -X option. In this perspective, t
         <title>Java Bypass SSL Verification in Spring</title>
         <description>&lt;p&gt;First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://dgempiuc.github.io/images/posts/steps.jpg&quot; alt=&quot;steps&quot; title=&quot;Code 1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/steps.jpg&quot; alt=&quot;steps&quot; title=&quot;Code 1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Have you ever noticed that in the address section of the browsers, there is information about whether the sites are reliable? So according to what is such a classification? In fact, each organization can create a certificate that contains its own private key. In order to be considered as safe in the internet environment, they are certified by the Certificate Authority which has a reliable status in the world. In other words, the certificate produced by the organization is signed by a CA. After the SSL certificate is received after
 the Https request, the browser finds the CA part in the certificate. If this CA is listed in its list of trusted CAs, this certificate is trusted. If a site appears to be unsafe, even though it has SSL, its CA is not a recognized CA on the world.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://dgempiuc.github.io/images/posts/ca.png&quot; alt=&quot;certificate-authority&quot; title=&quot;Code 2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/posts/ca.png&quot; alt=&quot;certificate-authority&quot; title=&quot;Code 2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;There was a problem in the project I was working on. In one integration, the site that was requested could not be verified by JDK because it had an unreliable CA. In this case, we would either upload the certificates to JDK’s keystore/truststore or skip to verify the SSL. The DevOps team rejected the first option by saying that if the certificate changes, it will be done installing certificates manually, making management and tracking difficult. I’ve turned to the other option. (simple) I’ve found related stackoverflow answers &lt;a href=&quot;https://stackoverflow.com/questions/12170396/disable-ssl-certificate-validation-of-https-connection&quot;&gt;1&lt;/a&gt; [2][2].&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HttpsURLConnection.setHostnameVerifier(callback function that returns true if it matches the ip address of the request site)
