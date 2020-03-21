@@ -3,10 +3,10 @@
   <channel>
     <title>Deniz G</title>
     <description>Blog about Software on Bilingual-Turkish and English.</description>
-    <link>http://localhost:4000/jekyll-uno/</link>
-    <atom:link href="http://localhost:4000/jekyll-uno/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 Mar 2020 17:35:22 +0200</pubDate>
-    <lastBuildDate>Sat, 21 Mar 2020 17:35:22 +0200</lastBuildDate>
+    <link>http://localhost:4000//</link>
+    <atom:link href="http://localhost:4000//feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 21 Mar 2020 17:51:13 +0200</pubDate>
+    <lastBuildDate>Sat, 21 Mar 2020 17:51:13 +0200</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -18,8 +18,8 @@
 &lt;p&gt;Now, in coronavirus days, I got bored and decided to change the site by using Jekyll jekyll-uno theme. I will continue to write my articles with the new look.&lt;/p&gt;
 </description>
         <pubDate>Sat, 21 Mar 2020 12:04:23 +0200</pubDate>
-        <link>http://localhost:4000/jekyll-uno/2020/welcome-to-jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2020/welcome-to-jekyll/</guid>
+        <link>http://localhost:4000//2020/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000//2020/welcome-to-jekyll/</guid>
         
         <category>software</category>
         
@@ -112,8 +112,8 @@ JFR event streaming ile, JFR event’lar meydana geldiğinde callback alınır v
 
 </description>
         <pubDate>Sun, 08 Mar 2020 17:04:23 +0200</pubDate>
-        <link>http://localhost:4000/jekyll-uno/2020/java-magazine-march-2020/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2020/java-magazine-march-2020/</guid>
+        <link>http://localhost:4000//2020/java-magazine-march-2020/</link>
+        <guid isPermaLink="true">http://localhost:4000//2020/java-magazine-march-2020/</guid>
         
         <category>programming</category>
         
@@ -133,8 +133,8 @@ JFR event streaming ile, JFR event’lar meydana geldiğinde callback alınır v
 &lt;p&gt;Nevertheless, it helps me in some cases. For example, I used redis (only works on linux) last weeks without virtual machine or docker.&lt;/p&gt;
 </description>
         <pubDate>Mon, 05 Aug 2019 18:04:23 +0300</pubDate>
-        <link>http://localhost:4000/jekyll-uno/2019/windows-subsystem-for-linux/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2019/windows-subsystem-for-linux/</guid>
+        <link>http://localhost:4000//2019/windows-subsystem-for-linux/</link>
+        <guid isPermaLink="true">http://localhost:4000//2019/windows-subsystem-for-linux/</guid>
         
         <category>software</category>
         
@@ -161,8 +161,8 @@ So? Docker toolbox creates virtual machine and run on it. It actually uses virtu
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 05 Aug 2019 18:04:23 +0300</pubDate>
-        <link>http://localhost:4000/jekyll-uno/2019/docker-and-vm-at-windows-10/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2019/docker-and-vm-at-windows-10/</guid>
+        <link>http://localhost:4000//2019/docker-and-vm-at-windows-10/</link>
+        <guid isPermaLink="true">http://localhost:4000//2019/docker-and-vm-at-windows-10/</guid>
         
         <category>software</category>
         
@@ -190,8 +190,8 @@ So, curl configures the method name behind the -X option. In this perspective, t
 
 </description>
         <pubDate>Wed, 22 May 2019 18:04:23 +0300</pubDate>
-        <link>http://localhost:4000/jekyll-uno/2019/curl-xget-vs-get/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2019/curl-xget-vs-get/</guid>
+        <link>http://localhost:4000//2019/curl-xget-vs-get/</link>
+        <guid isPermaLink="true">http://localhost:4000//2019/curl-xget-vs-get/</guid>
         
         <category>software</category>
         
@@ -218,8 +218,8 @@ So, curl configures the method name behind the -X option. In this perspective, t
 
 </description>
         <pubDate>Sat, 08 Dec 2018 17:04:23 +0200</pubDate>
-        <link>http://localhost:4000/jekyll-uno/2018/about-improve-coding-skills/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2018/about-improve-coding-skills/</guid>
+        <link>http://localhost:4000//2018/about-improve-coding-skills/</link>
+        <guid isPermaLink="true">http://localhost:4000//2018/about-improve-coding-skills/</guid>
         
         <category>programming</category>
         
@@ -256,8 +256,8 @@ the Https request, the browser finds the CA part in the certificate. If this CA 
 
 </description>
         <pubDate>Sat, 13 Oct 2018 18:04:23 +0300</pubDate>
-        <link>http://localhost:4000/jekyll-uno/2018/java-bypass-ssl-verification-in-spring/</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2018/java-bypass-ssl-verification-in-spring/</guid>
+        <link>http://localhost:4000//2018/java-bypass-ssl-verification-in-spring/</link>
+        <guid isPermaLink="true">http://localhost:4000//2018/java-bypass-ssl-verification-in-spring/</guid>
         
         <category>programming</category>
         
