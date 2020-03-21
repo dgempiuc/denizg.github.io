@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deniz G</title>
+    <description>Blog about Software on Bilingual-Turkish and English.</description>
+    <link>http://localhost:4000/jekyll-uno/</link>
+    <atom:link href="http://localhost:4000/jekyll-uno/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 21 Mar 2020 17:35:22 +0200</pubDate>
+    <lastBuildDate>Sat, 21 Mar 2020 17:35:22 +0200</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;Hello, I’ve started writing here in Oct 13, 2018 by using Hugo static website creator.&lt;/p&gt;
+
+&lt;p&gt;My motivation was to help others in some way by writing about my research about the topics that interested to me in daily life, or the problems and solutions that I have encountered in the business and that have kept me busy for a long time.&lt;/p&gt;
+
+&lt;p&gt;Now, in coronavirus days, I got bored and decided to change the site by using Jekyll jekyll-uno theme. I will continue to write my articles with the new look.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 21 Mar 2020 12:04:23 +0200</pubDate>
+        <link>http://localhost:4000/jekyll-uno/2020/welcome-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2020/welcome-to-jekyll/</guid>
+        
+        <category>software</category>
+        
+        
+        <category>software</category>
+        
+      </item>
+    
+      <item>
+        <title>Java Magazine March 2020 [TR]</title>
+        <description>&lt;p&gt;&lt;strong&gt;Jakarta Neyin Nesi?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Oracle, Java EE’yi Eclipse Foundationa transfer etmeye karar veriyor. Codebase’in büyüklüğünden dolayı 3 asamaya ayırıyorlar.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Yalnızca son sürümlerin specification ve kodu alınıyor ve artık javax değil jakarta group-id altında build’ler yayınlıyorlar. Önceki sürümler maintain edilmiyor. Aslında jakarta sürümü ile javax son sürümü birbirinin aynısı.&lt;/li&gt;
+  &lt;li&gt;Yeni specification process (jesp-jakarta ee specification process), yeni terimler/ürün adları tanımlanıyor. Öncesinde jcp-java community process ile, jsr-java specification requestler ile sağlanıyordu. Yeni ürünlerin ismi jakarta ile başlıyor, eski isimlerdeki api, service, architecture vs kaldırılıyor. Yeni ürünler boş specification documentler ile yayınlanıyor. Çünkü eskileri temiz hale getirmek uzun zaman alabilirdi.&lt;/li&gt;
+  &lt;li&gt;Specification document’larin update edilmesi. Yeni sürüm Java 8’de olacak ama Java 11 üzerinde calısabilecek. (tck=technologicy compatibility kit) Bu önemli cunku Java geriye donuk uyumlulugu bozup J ava11’de Java 8 olan ozellikleri cıkarmıstı. Mesela Java 8’deki uygulamaların Java 11’de derlenebilmesi icin jaxb gerekiyor.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Son sürüm Java EE8 idi. Tüm bu aşamalar tamamnlanınca sürüm adı Jakarta EE9. Aslında ekstra özellik yok. Jakarta EE10, yeni özelliklerin ekleneceği ilk sürüm olacak.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Java 14 ile Gelen Ozellikler&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Scheduled for release on March 17, 2020.&lt;/p&gt;
+
+&lt;p&gt;Java sürüm politikası için ek bilgi; Java 11’den itibaren 3 yılda bir major release(lts) cıkılacak. 6 ayda bir de minor releaseler. Sıradaki major release 2021, java 17 ile. son major release Java 11. Javada minor releaselerdeki feature’lar, sonraki sürümlerde feedback üzerine değiştirmek ve kaldırmak icin preview olarak tasarlanıyor. (preview featureları kullanabilmek icin compile time ve runtime’da enable edilmeli.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;javac --enable-preview --release &amp;lt;number&amp;gt; x.java
+java --enable-preview x.java
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Switch expressionlar kalıcı hale geldi. Java 12’de preview olarak eklenip, 13’de preview olarak geliştirilmişti.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Multiline text blocks. Java13’de preview olarak geldi ve hala oyle kalacak, geliştirmeler olacak. \s single space ve \ ile her satırın sonuna new line eklenmesinin önüne geçilir.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pattern matching for instanceof. Yeni preview feature. Conditional statement’ta instaceof ile işleme sokulmuş instance’ın koşulu geçerse explicit cast yapılmasının önüne geçilir. 2011’deki araştırma raporuna göre castların %24’ününün öncesinde instanceof varmış.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (obj instanceof Group) {
+  Group group = (Group) obj;
+  ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;yerine&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if(obj instanceof Group group) {
+	... // artık işlemler group üzerinden
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Records. Yeni preview feauture. public record constructorname(…params) ile hashCode, equals, toString implementaasyonu
+sağlanır. elle yazmaya gerek kalmaz. hali hazırda ide’lerle bu sağlanıyor, artık dilin kendi yapısıyla sağlanacak. mesela ilk başta ide tarafından otomatik get, hashCode, equals olusturuldu. sınıfa daha sonradan field eklenince buralar update edilmezse, izini nasıl süreceksin?&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Helpful NullPointerExceptions. user.getLocation().getCity().getName() gibi yapıda null hatası çıksa, nerede
+çıktığını bulmak zor. 3 farklı yerde çıkabilir. Yeni JVM feeture ile daha bilgilerindirici mesaj verilecek. default’ta enabled değil, JVM flag ile kullanılmalı.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java -XX:+ShowCodeDetailsInExceptionMessages 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Java Flight Recorder, Java Mission Control&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;JFR ve JMS, JVM running applicationlar icin profiling ve monitoring technologies. JFR is event-based profiling engine for writing events in binary format. JMC is GUI tool for examining a data file created by JFR from the telemetry of single JVM.&lt;/p&gt;
+
+&lt;p&gt;JDK11’e kadar ücretliyken open-source’a çevrildi.&lt;/p&gt;
+
+&lt;p&gt;Java 14 ile yeni JFR feature ile, JFR sürekli olarak event’ların stream’ini üretir ve event’lerin hemen handle edilmesini sağlar.
+Eski halinde profiling datanın oldugu dosya olusturulup oradan parse ediliyordu.
+JFR event streaming ile, JFR event’lar meydana geldiğinde callback alınır ve hemen cevap verilir. &lt;strong&gt;java agent için güzel bir use-case.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;JFR recordingi enable icin&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-XX:StartFlightRecording:&amp;lt;options&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;jpc-profiling configuration dosyalarıyla hangi metricler toplanacak belirlenir. ya da optionsa hangi data, ne kadar süre saklanacak ve hangi dosyada saklanacak belirlenir. Başlatırken ayarlamaya gerek yok, çalışan program üzerinden de “jcmd” ile aktive edilebilir.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Yukarıdaki tüm bilgiler Java Magazin’in Mart 2020 sayısını okurken kendime özet olması ve gelecekte hatırlamam için çıkardığım/yorumladığım ve türkçeye çevirdiğim bilgilerdir. Orjinal yazılar için &lt;a href=&quot;https://blogs.oracle.com/javamagazine/?source=:em:nw:mt::RC_WWMK190726P00001:NSL400037924&amp;amp;elq_mid=157128&amp;amp;sh=2320221411180624101924012335&amp;amp;cmid=WWMK190726P00001C0007&quot;&gt;adresi&lt;/a&gt; ziyaret edebilirsiniz.&lt;/p&gt;
+
+&lt;p&gt;Tüm özellikleri denedikçe ekstra bilgiler eklemeye çalışacağım.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 08 Mar 2020 17:04:23 +0200</pubDate>
+        <link>http://localhost:4000/jekyll-uno/2020/java-magazine-march-2020/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2020/java-magazine-march-2020/</guid>
+        
+        <category>programming</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>WSL (Windows Subsystem for Linux)</title>
+        <description>&lt;p&gt;I have become aware of the existence of a program called WSL (Windows Subsystem for Linux) in recent moths by suggestion of colleague.&lt;/p&gt;
+
+&lt;p&gt;There is no installation required, just enable it from ‘Control Panel -&amp;gt; Programs -&amp;gt; Turn Windows features on or off’.&lt;/p&gt;
+
+&lt;p&gt;It is simple/lightweight linux and designed to run simple linux commands and programs at windows. Why? Because it’s not an emulator. The emulator is called running one environment/operating system in another one. This is basically converter and converts linux/windows system calls to each other. For example, for a linux program, firstly linux system calls are converted windows system calls. Then, windows kernel response is converted linux kernel response. The program acts as it were running on the linux kernel. But, there are some limitations as you can image. The whole linux system calls must be implemented as windows system calls. You can’t use for complex programs which require heavy workload.&lt;/p&gt;
+
+&lt;p&gt;Nevertheless, it helps me in some cases. For example, I used redis (only works on linux) last weeks without virtual machine or docker.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 05 Aug 2019 18:04:23 +0300</pubDate>
+        <link>http://localhost:4000/jekyll-uno/2019/windows-subsystem-for-linux/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2019/windows-subsystem-for-linux/</guid>
+        
+        <category>software</category>
+        
+        
+        <category>software</category>
+        
+      </item>
+    
+      <item>
+        <title>Docker and VM at Windows 10</title>
+        <description>&lt;p&gt;If you want to use virtual machines and docker at the same time in windows 10, you can’t. That’s the reason why.&lt;/p&gt;
+
+&lt;p&gt;There are 2 types of virtualization technology. Type-1 works on hostmachine’s hardware and hyper-v is one example of this.
+Type-2 works on operating systems and virtualbox, vmware are examples of this. So, if you intend to use docker, you need
+to set hypervisorlaunchtype* in order to enable hyper-v which is used by docker, but type-2 is not available now, and vice versa.&lt;/p&gt;
+
+&lt;p&gt;This situation is for windows 10, but docker and virtual machines work smoothly in windows 8. Why?&lt;/p&gt;
+
+&lt;p&gt;If you look carefully, the program name is “docker for window / docker desktop) in windows 10, but “docker toolbox (called old docker)” in windows 8.
+So? Docker toolbox creates virtual machine and run on it. It actually uses virtualbox and don’t need to hyper-v.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;bcdedit /set hypervisorlaunchtype off/auto and reboot&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 05 Aug 2019 18:04:23 +0300</pubDate>
+        <link>http://localhost:4000/jekyll-uno/2019/docker-and-vm-at-windows-10/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2019/docker-and-vm-at-windows-10/</guid>
+        
+        <category>software</category>
+        
+        
+        <category>software</category>
+        
+      </item>
+    
+      <item>
+        <title>curl -GET vs -XGET</title>
+        <description>&lt;p&gt;You maybe realize that there are some requests like -GET and -XGET if you use curl. It creates the complexity about using http methods.
+Do I need to use XGET or GET? The question is simple.&lt;/p&gt;
+
+&lt;p&gt;There are some supported http methods, but for example there is no delete which used many of us.
+If you type like “curl -DELETE”, it sends GET request. To address this problem, you will predefined -X before your method name like -XDELETE.&lt;/p&gt;
+
+&lt;p&gt;This style says curl that “hey man, I want to make request with exactly this method even if you don’t support this. Don’t change it.”
+So, curl configures the method name behind the -X option. In this perspective, there is no difference between -GET and -XGET because curl supports GET request.&lt;/p&gt;
+
+&lt;p&gt;There is a sample rest api for testing purpose in internet. You can visit it from  &lt;a href=&quot;https://reqres.in/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;curl -DELETE https://reqres.in/api/users/2 =&amp;gt; it uses “get single user api” (GET /api/users/2)&lt;/p&gt;
+
+&lt;p&gt;curl -XDELETE https://reqres.in/api/users/2 =&amp;gt; it works as expected.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 22 May 2019 18:04:23 +0300</pubDate>
+        <link>http://localhost:4000/jekyll-uno/2019/curl-xget-vs-get/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2019/curl-xget-vs-get/</guid>
+        
+        <category>software</category>
+        
+        
+        <category>software</category>
+        
+      </item>
+    
+      <item>
+        <title>About Improving Coding Skills</title>
+        <description>&lt;p&gt;What do you answer if I ask for a Java code that shows the numbers divided 2 between 0 and 10?&lt;/p&gt;
+
+&lt;p&gt;I’m sure that the majority gives the following answer (even an ordinary citizen who has no interested in the software).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/jekyll-uno/images/posts/code1.png&quot; alt=&quot;code-1&quot; title=&quot;Code 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This code doesn’t give any information about your programming level, But, it shows that you are not following the enhancements in the language you are using. What about the following one?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/jekyll-uno/images/posts/code2.png&quot; alt=&quot;code-2&quot; title=&quot;Code 2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Writing code requires a great technical knowledge as well as ability. When I look at the code above, I see the existence of technical information such as Collections, Stream API &amp;amp;&amp;amp; Lambda Expressions and Unboxing.&lt;/p&gt;
+
+&lt;p&gt;Of course, it is important to prioritize simplicity while doing things, but that was not what I wanted to tell.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 08 Dec 2018 17:04:23 +0200</pubDate>
+        <link>http://localhost:4000/jekyll-uno/2018/about-improve-coding-skills/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2018/about-improve-coding-skills/</guid>
+        
+        <category>programming</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+      <item>
+        <title>Java Bypass SSL Verification in Spring</title>
+        <description>&lt;p&gt;First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/jekyll-uno/images/posts/steps.jpg&quot; alt=&quot;steps&quot; title=&quot;Code 1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Have you ever noticed that in the address section of the browsers, there is information about whether the sites are reliable? So according to what is such a classification? In fact, each organization can create a certificate that contains its own private key. In order to be considered as safe in the internet environment, they are certified by the Certificate Authority which has a reliable status in the world. In other words, the certificate produced by the organization is signed by a CA. After the SSL certificate is received after
+the Https request, the browser finds the CA part in the certificate. If this CA is listed in its list of trusted CAs, this certificate is trusted. If a site appears to be unsafe, even though it has SSL, its CA is not a recognized CA on the world.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/jekyll-uno/images/posts/ca.png&quot; alt=&quot;certificate-authority&quot; title=&quot;Code 2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There was a problem in the project I was working on. In one integration, the site that was requested could not be verified by JDK because it had an unreliable CA. In this case, we would either upload the certificates to JDK’s keystore/truststore or skip to verify the SSL. The DevOps team rejected the first option by saying that if the certificate changes, it will be done installing certificates manually, making management and tracking difficult. I’ve turned to the other option. (simple) I’ve found related stackoverflow answers &lt;a href=&quot;https://stackoverflow.com/questions/12170396/disable-ssl-certificate-validation-of-https-connection&quot;&gt;1&lt;/a&gt; [2][2].&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;HttpsURLConnection.setHostnameVerifier(callback function that returns true if it matches the ip address of the request site)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;But I’ve done the issue, I realized that it was still getting an error after getting version. When I did a little research in the project, I found two more locations using this method in configuration beans.&lt;/p&gt;
+
+&lt;p&gt;Now guess what’s the problem here?&lt;/p&gt;
+
+&lt;p&gt;1- If you look at the method, there is only a way to make a use in the style of (Class).(method). The method must be a static method. Here, SetHostnameVerifier is a static method. That is, this method is not the object variable, but the class variable. All objects created have a common value.&lt;/p&gt;
+
+&lt;p&gt;2- I said that the other places used are config beans. Beans are objects created by Spring Container. When spring runs, it starts to create objects with bean annotation.&lt;/p&gt;
+
+&lt;p&gt;So? As the beans that use this static method are created, they start to override each other. If the bean has been created for the last time, its setting remains. For the solution, I have defined a method with the @PostContruct annotation in the Application.java, which is the main entry point of the Spring Boot. I put setHostnameVerifiers here, removing all the config beans that use it. So the problem is solved.&lt;/p&gt;
+
+&lt;p&gt;The solution is simple, but it took me a while to understand the problem.&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 13 Oct 2018 18:04:23 +0300</pubDate>
+        <link>http://localhost:4000/jekyll-uno/2018/java-bypass-ssl-verification-in-spring/</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll-uno/2018/java-bypass-ssl-verification-in-spring/</guid>
+        
+        <category>programming</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
+    
+  </channel>
+</rss>

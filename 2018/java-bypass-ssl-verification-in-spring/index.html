@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <title>Java Bypass SSL Verification in Spring</title>
+  <meta name="description" content="First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.
+
+">
+  <meta name="author" content="denizg">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Java Bypass SSL Verification in Spring">
+  <meta name="twitter:description" content="First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.
+
+">
+  
+  <meta name="twitter:image" content="/jekyll-uno/images/favicons/favicon-194x194.png" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Java Bypass SSL Verification in Spring">
+  <meta property="og:description" content="First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.
+
+">
+  <meta property="og:image" content="/jekyll-uno/images/favicons/favicon-194x194.png" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/jekyll-uno/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/jekyll-uno/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/jekyll-uno/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/jekyll-uno/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/jekyll-uno/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/jekyll-uno/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/jekyll-uno/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/jekyll-uno/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/jekyll-uno/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/jekyll-uno/images/favicons/manifest.json">
+  <link rel="shortcut icon" href="/jekyll-uno/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="/jekyll-uno/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" href="/jekyll-uno/css/main.css?1584804922780483100">
+  <link rel="canonical" href="http://localhost:4000/jekyll-uno/2018/java-bypass-ssl-verification-in-spring/">
+  <link rel="alternate" type="application/rss+xml" title="Deniz G" href="/jekyll-uno/feed.xml">
+</head>
+
+
+  <body>
+    <span class="mobile btn-mobile-menu">
+  <i class="icon icon-list btn-mobile-menu__icon"></i>
+  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+</span>
+
+<header class="panel-cover" style="background-image: url(/jekyll-uno/images/cover.jpg)">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <a href="/jekyll-uno/" title="link to home of Deniz G">
+          <img src="/jekyll-uno/images/profile.jpg" class="user-image" alt="My Profile Photo">
+          <h1 class="panel-cover__title panel-title">Deniz G</h1>
+        </a>
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">Blog about Software on Bilingual-Turkish and English.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/jekyll-uno/#blog" title="link to Deniz G blog" class="blog-button">Blog</a></li>
+            </ul>
+          </nav>
+
+          <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+
+            
+
+            
+
+            
+
+            
+              <!-- GitHub -->
+              <li class="navigation__item">
+                <a href="https://www.github.com/dgempiuc" title="dgempiuc on GitHub" target="_blank">
+                  <i class="icon icon-social-github"></i>
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+            
+
+            
+              <!-- Email -->
+              <li class="navigation__item">
+                <a href="mailto:dgempiuc@gmail.com" title="Email dgempiuc@gmail.com" target="_blank">
+                  <i class="icon icon-mail"></i>
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            
+
+            <!-- RSS -->
+            <li class="navigation__item">
+              <a href="/jekyll-uno/feed.xml" title="Subscribe" target="_blank">
+                <i class="icon icon-rss"></i>
+                <span class="label">RSS</span>
+              </a>
+            </li>
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+      <div class="content-wrapper__inner">
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-10-13 18:04" class="post-meta__date date">13 Oct 2018</time>
+      
+      &#8226; <span class="post-meta__tags">on <a href="/jekyll-uno/tags/#programming">programming</a></span>
+      
+    </div>
+    <h1 class="post-title">Java Bypass SSL Verification in Spring</h1>
+  </header>
+
+  <section class="post">
+    <p>First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.</p>
+
+<p><img src="http://localhost:4000/jekyll-uno/images/posts/steps.jpg" alt="steps" title="Code 1" /></p>
+
+<p>Have you ever noticed that in the address section of the browsers, there is information about whether the sites are reliable? So according to what is such a classification? In fact, each organization can create a certificate that contains its own private key. In order to be considered as safe in the internet environment, they are certified by the Certificate Authority which has a reliable status in the world. In other words, the certificate produced by the organization is signed by a CA. After the SSL certificate is received after
+the Https request, the browser finds the CA part in the certificate. If this CA is listed in its list of trusted CAs, this certificate is trusted. If a site appears to be unsafe, even though it has SSL, its CA is not a recognized CA on the world.</p>
+
+<p><img src="http://localhost:4000/jekyll-uno/images/posts/ca.png" alt="certificate-authority" title="Code 2" /></p>
+
+<p>There was a problem in the project I was working on. In one integration, the site that was requested could not be verified by JDK because it had an unreliable CA. In this case, we would either upload the certificates to JDK’s keystore/truststore or skip to verify the SSL. The DevOps team rejected the first option by saying that if the certificate changes, it will be done installing certificates manually, making management and tracking difficult. I’ve turned to the other option. (simple) I’ve found related stackoverflow answers <a href="https://stackoverflow.com/questions/12170396/disable-ssl-certificate-validation-of-https-connection">1</a> [2][2].</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HttpsURLConnection.setHostnameVerifier(callback function that returns true if it matches the ip address of the request site)
+</code></pre></div></div>
+<p>But I’ve done the issue, I realized that it was still getting an error after getting version. When I did a little research in the project, I found two more locations using this method in configuration beans.</p>
+
+<p>Now guess what’s the problem here?</p>
+
+<p>1- If you look at the method, there is only a way to make a use in the style of (Class).(method). The method must be a static method. Here, SetHostnameVerifier is a static method. That is, this method is not the object variable, but the class variable. All objects created have a common value.</p>
+
+<p>2- I said that the other places used are config beans. Beans are objects created by Spring Container. When spring runs, it starts to create objects with bean annotation.</p>
+
+<p>So? As the beans that use this static method are created, they start to override each other. If the bean has been created for the last time, its setting remains. For the solution, I have defined a method with the @PostContruct annotation in the Application.java, which is the main entry point of the Spring Boot. I put setHostnameVerifiers here, removing all the config beans that use it. So the problem is solved.</p>
+
+<p>The solution is simple, but it took me a while to understand the problem.</p>
+
+
+  </section>
+  
+</article>
+
+
+
+      </div>
+
+      <footer class="footer">
+  <span class="footer__copyright">&copy; 2020 denizg. All rights reserved.</span>
+</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/jekyll-uno/js/main.js?1584804922780483100"></script>
+
+
+    </div>
+  </body>
+</html>

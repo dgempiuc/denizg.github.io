@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <title>curl -GET vs -XGET</title>
+  <meta name="description" content="You maybe realize that there are some requests like -GET and -XGET if you use curl. It creates the complexity about using http methods.
+Do I need to use XGET or GET? The question is simple.
+
+">
+  <meta name="author" content="denizg">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="curl -GET vs -XGET">
+  <meta name="twitter:description" content="You maybe realize that there are some requests like -GET and -XGET if you use curl. It creates the complexity about using http methods.
+Do I need to use XGET or GET? The question is simple.
+
+">
+  
+  <meta name="twitter:image" content="/jekyll-uno/images/favicons/favicon-194x194.png" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="curl -GET vs -XGET">
+  <meta property="og:description" content="You maybe realize that there are some requests like -GET and -XGET if you use curl. It creates the complexity about using http methods.
+Do I need to use XGET or GET? The question is simple.
+
+">
+  <meta property="og:image" content="/jekyll-uno/images/favicons/favicon-194x194.png" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/jekyll-uno/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/jekyll-uno/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/jekyll-uno/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/jekyll-uno/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/jekyll-uno/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/jekyll-uno/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/jekyll-uno/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/jekyll-uno/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/jekyll-uno/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/jekyll-uno/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/jekyll-uno/images/favicons/manifest.json">
+  <link rel="shortcut icon" href="/jekyll-uno/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="/jekyll-uno/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" href="/jekyll-uno/css/main.css?1584804922780483100">
+  <link rel="canonical" href="http://localhost:4000/jekyll-uno/2019/curl-xget-vs-get/">
+  <link rel="alternate" type="application/rss+xml" title="Deniz G" href="/jekyll-uno/feed.xml">
+</head>
+
+
+  <body>
+    <span class="mobile btn-mobile-menu">
+  <i class="icon icon-list btn-mobile-menu__icon"></i>
+  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+</span>
+
+<header class="panel-cover" style="background-image: url(/jekyll-uno/images/cover.jpg)">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <a href="/jekyll-uno/" title="link to home of Deniz G">
+          <img src="/jekyll-uno/images/profile.jpg" class="user-image" alt="My Profile Photo">
+          <h1 class="panel-cover__title panel-title">Deniz G</h1>
+        </a>
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">Blog about Software on Bilingual-Turkish and English.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/jekyll-uno/#blog" title="link to Deniz G blog" class="blog-button">Blog</a></li>
+            </ul>
+          </nav>
+
+          <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+
+            
+
+            
+
+            
+
+            
+              <!-- GitHub -->
+              <li class="navigation__item">
+                <a href="https://www.github.com/dgempiuc" title="dgempiuc on GitHub" target="_blank">
+                  <i class="icon icon-social-github"></i>
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+            
+
+            
+              <!-- Email -->
+              <li class="navigation__item">
+                <a href="mailto:dgempiuc@gmail.com" title="Email dgempiuc@gmail.com" target="_blank">
+                  <i class="icon icon-mail"></i>
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            
+
+            <!-- RSS -->
+            <li class="navigation__item">
+              <a href="/jekyll-uno/feed.xml" title="Subscribe" target="_blank">
+                <i class="icon icon-rss"></i>
+                <span class="label">RSS</span>
+              </a>
+            </li>
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+      <div class="content-wrapper__inner">
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-05-22 18:04" class="post-meta__date date">22 May 2019</time>
+      
+      &#8226; <span class="post-meta__tags">on <a href="/jekyll-uno/tags/#software">software</a></span>
+      
+    </div>
+    <h1 class="post-title">curl -GET vs -XGET</h1>
+  </header>
+
+  <section class="post">
+    <p>You maybe realize that there are some requests like -GET and -XGET if you use curl. It creates the complexity about using http methods.
+Do I need to use XGET or GET? The question is simple.</p>
+
+<p>There are some supported http methods, but for example there is no delete which used many of us.
+If you type like “curl -DELETE”, it sends GET request. To address this problem, you will predefined -X before your method name like -XDELETE.</p>
+
+<p>This style says curl that “hey man, I want to make request with exactly this method even if you don’t support this. Don’t change it.”
+So, curl configures the method name behind the -X option. In this perspective, there is no difference between -GET and -XGET because curl supports GET request.</p>
+
+<p>There is a sample rest api for testing purpose in internet. You can visit it from  <a href="https://reqres.in/">here</a>.</p>
+
+<p>curl -DELETE https://reqres.in/api/users/2 =&gt; it uses “get single user api” (GET /api/users/2)</p>
+
+<p>curl -XDELETE https://reqres.in/api/users/2 =&gt; it works as expected.</p>
+
+
+  </section>
+  
+</article>
+
+
+
+      </div>
+
+      <footer class="footer">
+  <span class="footer__copyright">&copy; 2020 denizg. All rights reserved.</span>
+</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/jekyll-uno/js/main.js?1584804922780483100"></script>
+
+
+    </div>
+  </body>
+</html>
