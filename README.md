@@ -1,3 +1,3 @@
 static jekyll website with jekyll-uno theme
 
-dgempiuc.github.io
+https://dgempiuc.github.io
