@@ -7,7 +7,7 @@
   
 
   <title>Java Bypass SSL Verification in Spring</title>
-  <meta name="description" content="First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.
+  <meta name="description" content="How to bypass SSL verification in Spring?
 
 ">
   <meta name="author" content="denizg">
@@ -19,7 +19,7 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Java Bypass SSL Verification in Spring">
-  <meta name="twitter:description" content="First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.
+  <meta name="twitter:description" content="How to bypass SSL verification in Spring?
 
 ">
   
@@ -27,7 +27,7 @@
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Java Bypass SSL Verification in Spring">
-  <meta property="og:description" content="First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.
+  <meta property="og:description" content="How to bypass SSL verification in Spring?
 
 ">
   <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
@@ -52,7 +52,7 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
   
-  <link rel="stylesheet" href="/css/main.css?1584807261189045000">
+  <link rel="stylesheet" href="/css/main.css?1587297163819103600">
   <link rel="canonical" href="http://localhost:4000/2018/java-bypass-ssl-verification-in-spring/">
   <link rel="alternate" type="application/rss+xml" title="Deniz G" href="/feed.xml">
 </head>
@@ -150,7 +150,9 @@
   </header>
 
   <section class="post">
-    <p>First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.</p>
+    <p>How to bypass SSL verification in Spring?</p>
+
+<p>First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.</p>
 
 <p><img src="/images/posts/steps.jpg" alt="steps" title="Code 1" /></p>
 
@@ -188,7 +190,7 @@ the Https request, the browser finds the CA part in the certificate. If this CA 
 </footer>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/main.js?1584807261189045000"></script>
+<script type="text/javascript" src="/js/main.js?1587297163819103600"></script>
 
 
     </div>

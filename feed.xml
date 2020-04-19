@@ -5,9 +5,99 @@
     <description>Blog about Software on Bilingual-Turkish and English.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 Mar 2020 18:14:21 +0200</pubDate>
-    <lastBuildDate>Sat, 21 Mar 2020 18:14:21 +0200</lastBuildDate>
+    <pubDate>Sun, 19 Apr 2020 14:52:43 +0300</pubDate>
+    <lastBuildDate>Sun, 19 Apr 2020 14:52:43 +0300</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Java Magazine April 2020 [TR]</title>
+        <description>&lt;p&gt;&lt;strong&gt;CDC(Consumer-Driven Contract) Test&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Microservis mimarisi, servisler arasında bircok iletisim icerir. Zaman içerisinde servislerin ürettiği veriler değişebilir, bu da aralarında input ve output bekletilerini içeren bir contract oluşturmalarına neden olur. Contract testler ile, microservisteki bileşenlerin bu contract’ı karsıladığı doğrulanır ve input/output değişimlerinde doğrulamadaki hatalarla kırılan yerlerin düzeltilmesi sağlanır.&lt;/p&gt;
+
+&lt;p&gt;Consumer-driven demek, contract’ın consumer tarafında başlamasından kaynaklanıyor, fakat bu contract her iki tarafta da çalışıyor.&lt;/p&gt;
+
+&lt;p&gt;Pact, consume-driven contract desteği sağlayan bir test framework’ü. Mock/Stub Http Server ile, consumer’ın istekleri ve beklediği responselar mock’lanır, böylece gerçekten provider tarafına istek atılmaz. Consumer tarafındaki bu isteklerden pact contract file adında bir kayıt oluşturulur ve pact broker’da saklanır. Bu, contractların saklanması ve paydaşlar arasında paylaşılması için repository görevi görür. Aynı istekler, bu sefer contract içindeki diğer tarafta koşturulur. Provider, bu contract’ı çeker ve consumer tarafında mock’lanan istekleri kendi üzerinde gerçek isteklerle çalıştırır ve dönen response ile contract’daki response karşılaştırılır.&lt;/p&gt;
+
+&lt;p&gt;Aslında yukarıdaki akışın, Spring üzerine kurulu mikroservislerde CDC testleri koşturmak için yazılmış Spring Cloud Contract kütüphanesinden farkı yok.&lt;/p&gt;
+
+&lt;p&gt;Pact, JUnit test framework’ü ve Maven/Gradle gibi build tool’ları ile sıkı sıkıya entegrasyona sahip.
+Consumer tarafında testi hazırlamak için Pact extension’ı ve bir annotation yeterli. Bu extension ile, Mock Http server ayarlanır ve pact contract file oluşturulur. @Pact annotation ile de, iletişimdeki input/output expectation’lar tanımlanır.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Rule 
+public PactProviderRule mockProvider = new PactProviderRule(&quot;test_provider&quot;, &quot;localhost&quot;, 8080, this);
+
+@Pact(provider=&quot;test_provider&quot;, consumer=&quot;test_consumer&quot;)
+public PactFragment createFragment(PactDslWithProvider builder) {
+	return builder
+   .uponReceiving(&quot;a request for something&quot;).path(&quot;/hello&quot;).method(&quot;POST&quot;).body(&quot;json&quot;)
+   .willRespondWith().status(200).body(&quot;json&quot;)
+   .toFragment();
+   // PactDslJsonBody builder sınıfı ile, static tanımlı body'ler yerine dynamic şekilde oluşurulabilir.
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Provider tarafındaki testte contract’ları doğrulamak için JUnit testi yada maven pluginleri kullanılabilir.
+Maven plugin ile, pact broker url’i ile yayınlanan contract’lar çekilir, mvn pact:verify ile doğrulanır.&lt;/p&gt;
+
+&lt;p&gt;Pact State’ler ile, consumer ve provider arasında bilgi paylaşımı sağlanır, böylece provider’da testler başlamadan önce provider’a özgü ayarlamalar yapılır. Mesela ne gibi? Veritabanında benim gönderdiğim verileri ekleyerek test işlemini bu veriler üzerinden gerçekleştir gibi.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;JUnit5&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;JUnit4’den 5’e geçerken testleri yeniden düzenleyebileceğinizi düşünebilirsiniz, fakat JUnit5, JUnit4 testlerini
+Vintage library kullanarak çalıştırabilir. böylece eskiler üzerinde yoğunlaşmadan sadece yeni testler JUnit5
+kullanılarak yazılabilir.&lt;/p&gt;
+
+&lt;p&gt;Farklar&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;importlar org.junit yerine org.junit.jupiter.api package altında&lt;/li&gt;
+  &lt;li&gt;@Test annotasyonu parametre almak yerine, özel assertions fonksiyonlara bırakıldı. mesela test sonucu beklenen hatayı belirtmek için expected property yerine assertThrows yada assertDoesNotThrow ile bu kontrol yapılacak.&lt;/li&gt;
+  &lt;li&gt;annotation isimlendirmeleri değişti. mesela before ve beforeclass daha anlaşılabilir hale getirilmiş. 
+before -&amp;gt; beforeEach, beforeClass -&amp;gt; beforeAll, ignore -&amp;gt; disabled, category -&amp;gt; tag.&lt;/li&gt;
+  &lt;li&gt;assertions altındaki hata mesajları son arguman olarak geçiliyor. assertion fail olması durumunda
+error mesajı hazırlamak için lambda kabul edebilecekler.&lt;/li&gt;
+  &lt;li&gt;assumptionlarda, condition karşılaşırsa çalışıtırılacak code lambda ile sağlanabilir hale gelebilir.&lt;/li&gt;
+  &lt;li&gt;JUnit’de framework’ü yapılandırmak icin RunWith kullanarak extension’lar belirtiliyor, mesela @RunWith(SpringJUnit4ClassRunner.class). JUnit4’de her class için yalnız bir tane extension belirtilebiliyorken, daha fazlası için Rule ve ClassRule annotation’lı değişkenler tanımlamak gerekiyordu. JUnit5 ile extensionlar geliştirildi. Artık RunWith/Rule ve Classsrule yerine, ExtendWith ve RegisterExtension ile birçok extension kullanılabilir.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Yeni Eklenenler&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;@DisplayName. sınıf ve test-case’lerden önce, amaçlarını belirtmek için kullanılır.&lt;/li&gt;
+  &lt;li&gt;@Test propertylerini karşılayacak yeni assertions methodları.&lt;/li&gt;
+  &lt;li&gt;@Nested ile nested test classları. böylece tek bir sınıfın farklı amaçlarla yazılan test-case’leri farklı test sınıflarında yazılmak yerine aynı nested class’ta yazılır, böylece benzer test-case’ler aynı nested class’ta gruplanmış olur.&lt;/li&gt;
+  &lt;li&gt;parameterized tests. JUnit4’de bu dışarıdan sağlanan library ile vardı, fakat artık built-in destek var.
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@ParameterizedTest
+@ValueSource(strings = {&quot;foo&quot;, &quot;bar&quot;}) // source tipleri; value, empty, null, enum, arguments, method, csv
+public void test(String args) {}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;@RepeatedTests ile testi istenilen sayıda tekrar çalıştırma&lt;/li&gt;
+  &lt;li&gt;conditional test execution. belirtilen koşula göre @Disabled olup olmamasını belirliyor. @EnabledOnX, @EnableIfX&lt;/li&gt;
+  &lt;li&gt;test templates ve dynamic tests. detayları araştırınca ekleyeceğim.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Micronaut ve SSE&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bu iki konu üzerine bir örnek geliştirme yazısı var, bu ikisini ilk defa duydum.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Micronaut is a modern, JVM-based, full-stack framework for building modular,  easily testable microservice and serverless applications. Micronaut has built-in support for Kafka, RabbitMQ, and two HTML5 messaging paradigms: server-sent events (SSE) and WebSocket. 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Micronaut, Spring Boot ile karşılaştırıldığında daha hızlı ayağa kalkma (runtime yerine compile time dependency injection’dan dolayı), daha düşük memory tüketimi ve daha fazla isteğe cevap verebilme kabiliyetine sahip.&lt;/p&gt;
+
+&lt;p&gt;SSE(Server-Sent Events), WebSocket’e benzer bir yapı. İkisi de push technology, fakat WebSocket’te bi-directional veri akışı varken, SSE’de sadece server’dan client tarafına veri akışı var.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 19 Apr 2020 14:19:23 +0300</pubDate>
+        <link>http://localhost:4000/2020/java-magazine-april-2020/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/java-magazine-april-2020/</guid>
+        
+        <category>programming</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Welcome to Jekyll!</title>
@@ -29,7 +119,7 @@
       </item>
     
       <item>
-        <title>Java Magazine March 2020 [TR]</title>
+        <title>Java Magazine February 2020 [TR]</title>
         <description>&lt;p&gt;&lt;strong&gt;Jakarta Neyin Nesi?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Oracle, Java EE’yi Eclipse Foundationa transfer etmeye karar veriyor. Codebase’in büyüklüğünden dolayı 3 asamaya ayırıyorlar.&lt;/p&gt;
@@ -112,8 +202,8 @@ JFR event streaming ile, JFR event’lar meydana geldiğinde callback alınır v
 
 </description>
         <pubDate>Sun, 08 Mar 2020 17:04:23 +0200</pubDate>
-        <link>http://localhost:4000/2020/java-magazine-march-2020/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020/java-magazine-march-2020/</guid>
+        <link>http://localhost:4000/2020/java-magazine-february-2020/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/java-magazine-february-2020/</guid>
         
         <category>programming</category>
         
@@ -230,7 +320,9 @@ So, curl configures the method name behind the -X option. In this perspective, t
     
       <item>
         <title>Java Bypass SSL Verification in Spring</title>
-        <description>&lt;p&gt;First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.&lt;/p&gt;
+        <description>&lt;p&gt;How to bypass SSL verification in Spring?&lt;/p&gt;
+
+&lt;p&gt;First of all, let me briefly inform you about Https. In computer networks, a message is created in the application layer and then transported to the destination by encapsulating the transport, network and link layer. In requests for Https, a request is sent from port 443 (not 80). After the server receives this request, it sends the SSL certificate including the public key to the client. The difference between Https and Http occurs in the next step. In the HTTPS request, logically the SSL/TLS layer occurs between the application and the transport layer, and the client encrypts the message to be sent by the public key in the certificate. Since the private key is on the server, the message content cannot be manipulated or read, even if the message is captured by any malicious software or user(MITM) until it exits the sender and goes to the server. Therefore, it is important that you have an SSL certificate at the relevant address when you are shopping or doing critical information.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/posts/steps.jpg&quot; alt=&quot;steps&quot; title=&quot;Code 1&quot; /&gt;&lt;/p&gt;
 
