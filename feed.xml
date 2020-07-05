@@ -5,9 +5,224 @@
     <description>Blog about Software on Bilingual-Turkish and English.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 19 Apr 2020 14:52:43 +0300</pubDate>
-    <lastBuildDate>Sun, 19 Apr 2020 14:52:43 +0300</lastBuildDate>
+    <pubDate>Sun, 05 Jul 2020 17:48:45 +0300</pubDate>
+    <lastBuildDate>Sun, 05 Jul 2020 17:48:45 +0300</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Cloud and Serverless Turkey Ramazan Özel [TR]</title>
+        <description>&lt;p&gt;Merhabalar,&lt;/p&gt;
+
+&lt;p&gt;Ramazan ayı boyunca Cloud and Serverless Turkey meetup ekibi haftada bir yada iki olmak üzere, ben gibi Cloud’a yeni başlayacaklar için çok yararlı olacak online etkinlikler düzenledi. Ben de dinlerken bazı önemli gördüğüm noktaları not aldım ve blog’uma aktarmak için şu an zaman bulabildim.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://kommunity.com/cloud-and-serverless-turkey/events/serverless-turkiye-ile-ramazan-ozel-134b33a1&quot;&gt;Etkinlik Sayfası&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;6 Mayıs Çarşamba - AWS Global infrastructure: Uygulamamı us-east-1’a deploy ettim patladı, orucum kabul olur mu?&lt;/li&gt;
+  &lt;li&gt;12 Mayıs Salı - DevOps vs SRE: hangisi daha çok sevap point kazandırır?&lt;/li&gt;
+  &lt;li&gt;15 Mayıs Cuma - Cold Start ve diğer Serverless problemleri: İstemeden Cold Start’a yakalandım, orucum bozulmuş olur mu?&lt;/li&gt;
+  &lt;li&gt;18 Mayıs Pazartesi - Container vs Serverless: Containerlar ile Serverless fonksiyonları beraber kullanmak caiz midir?&lt;/li&gt;
+  &lt;li&gt;21 Mayıs Perşembe - Cloud’a nasıl başlarım: Cloud korkularımı yenmek için ne yapmayalım?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;AWS Bulut Altyapısı Bileşenler: Zone, Region, CDN ve daha fazlası&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Sn4sSTtYj-A&quot; title=&quot;AWS Bulut Altyapısı Bileşenler&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/Sn4sSTtYj-A/0.jpg&quot; alt=&quot;AWS Bulut Altyapısı Bileşenler&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;AWS altyapısı ile ilgili kavramları (Regions, AZ-Availability Zones, Local Zones, Point of Presence, Network) görsel olarak anlatan bir site.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://infrastructure.aws&quot; target=&quot;_blank&quot;&gt;infrastructure.aws&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Region seçimindeki en büyük fark lateny. Türkiye için genelde Frankfurt tercih ediliyor. (60-80ms round trip latency) Mesela Dublin için 130ms. Rakamların anlam kazanması için; insanın gözünü açıp kapatması 300ms sürüyor.&lt;/p&gt;
+
+&lt;p&gt;Bulunduğunuz bölgeden region’lara olan latency’i hesaplayan bir site. Region seçiminde faydalı olabilir.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cloudping.info/&quot; target=&quot;_blank&quot;&gt;cloudping.info&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Peki region, latency harici neye göre seçilmeli? Yeni servis ya da yeni eklenen özellik hemen tüm region’lara gelmiyor. Genelde avrupa için ilk region olan Dublin’e geliyor. Tabii, müşteri profiline göre de bir etkisi var. IoT sektörü oralarda daha gelişmiş olduğu için IoT özellikleri genelde Frankfurt’a geliyor.&lt;/p&gt;
+
+&lt;p&gt;Her servisin fiyatı her region’da aynı değil, maliyete göre fiyatlandırma yapılıyor; enerji maliyeti, insan gücü maliyeti vs. Mesela Amerika’da enerji, Amazon’un kendi güneş panellerinden üretildiği için oradaki servisler daha ucuz.&lt;/p&gt;
+
+&lt;p&gt;AZ-Availability Zones = Datacenter Cluster&lt;/p&gt;
+
+&lt;p&gt;Az to AZ latency: 2-4 ms&lt;/p&gt;
+
+&lt;p&gt;Veriyi region’a yükleyince, arka planda birden cok AZ’ye replica ediyor. Yüzde 99,9…(9 tane 9) availability sağlıyor. Veri sadece o region’da, regionlar arası kopyalama yok. Böylece Türkiye bir gün region olursa, veri Türkiye dışına çıkmıyor, yani KVKK’ya uyuyor.&lt;/p&gt;
+
+&lt;p&gt;Local Zone= Tek datacenter ve bir region’a bağlı. Altyapıyı hızlı şekilde kurmak için, tüm servisler yok, amaç ihtiyaca göre hızlı cevap verecek şekilde tasarlamak, diğer türlü AZ tasarlamak zor.&lt;/p&gt;
+
+&lt;p&gt;Point of Presence ile latency’i azaltmaya yönelik region’a giden yolda cache noktaları var.&lt;/p&gt;
+
+&lt;p&gt;Spot instance: Çok kullanılmayan makinelerde (mesela milanda daha az kullanıcı varsa) daha ucuz maliyetle servisleri kullanabilme imkanı var, açık artırma gibi. Diğer kullanım yöntemleri on-demand ve reserved instances.&lt;/p&gt;
+
+&lt;p&gt;Ya region fail olursa? O zaman region bazında high availability seçeceksin. Uygulamayı iki regiona dağıtacaksın. Bu da x2 maliyet demek. Ortada bir trade-off var: risk mi maliyet mi? Ama zoned-based architecture yeterince güvenli.&lt;/p&gt;
+
+&lt;p&gt;AWS neye göre region kuruyor? return of invesment: yatırımı kaç senede cıkarabilirim?&lt;/p&gt;
+
+&lt;p&gt;AWS re:Invent 2016: Amazon Global Network Overview with James Hamilton&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=uj7Ting6Ckk&quot; target=&quot;_blank&quot;&gt;AWS arkasındaki mühendislik&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DevOps ve SRE farkı nedir?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=WiYBsY_6FFU&quot; title=&quot;DevOps ve SRE farkı nedir?&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/WiYBsY_6FFU/0.jpg&quot; alt=&quot;DevOps ve SRE farkı nedir?&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Farklarında önce bir benzerliği, ikisi de cross-functional team.&lt;/p&gt;
+
+&lt;p&gt;DevOps, developerlar işini yapabilsin diye kod hariç herşeyi yapan kesim. Yazılım sektörüyle ilgili teknik pratikleri içerir.&lt;/p&gt;
+
+&lt;p&gt;SRE-Site Reliability Engineer, ilk olarak Google tarafından uygulanmıştır. google’ın tanımına göre yazılımcıya SysAdmin işlerini vermeye deniyor.&lt;/p&gt;
+
+&lt;p&gt;SRE implements DevOps.&lt;/p&gt;
+
+&lt;p&gt;SRE’in ana görevi reliability, yani üründe çıkan soruları çözerek ürünün ayakta sağlam şekilde olmasında sorumlu, bunu da Scalability, Security, Monitoring, Automation gibi DevOps süreçleriyle sağlıyor. Burası işinin %50’si. Kalan %50’si ile yazılım yaparak ürün geliştirme. Ama bu geliştirme domain’e yönelik değil, developer’ların kullanacağı ürünler. Yani infrastructure development.&lt;/p&gt;
+
+&lt;p&gt;SRE, şirket içindeki en güçlü yazılım mühendisleridir,koçluk yaparlar, best practice’leri anlatırlar, 2-3 ay bir takıma giderler ve reliability olmayı öğretirler.&lt;/p&gt;
+
+&lt;p&gt;Altyapıdaki know-how’ı almak, kişileri bu altyapıya entegre etmek aylar sürebilir. SRE’in altyapıda kullanılan herşey hakkında, normalin ilerisinde bilgisi olmalıdır.&lt;/p&gt;
+
+&lt;p&gt;Altyapı çok sancılı bir süreç. Herşeyi tasarladın yaptın ettin ama buna adapte olacak kimse yoksa, yine reliability’in kırılıyor.&lt;/p&gt;
+
+&lt;p&gt;Developer’ların kafkayı nasıl scale edeceğini bilmesi gerekmiyor, ama oraya nasıl mesaj atacak bilebilmeli. Buradaki ownership, takımlarda değil SRE’de. Developer nasıl kullanacağını biliyor ama nasıl çalışıyor bilmiyor. Serverless’a yakın bir sistem sunuluyor aslında. Shared-Responsibility.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jbd.dev/prod-readiness/&quot; target=&quot;_blank&quot;&gt;https://jbd.dev/prod-readiness/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/google-cloud/production-guideline-9d5d10c8f1e&quot; target=&quot;_blank&quot;&gt;https://medium.com/google-cloud/production-guideline-9d5d10c8f1e&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FaaS - Serverless (AWS Lambda) Problemleri ve Çözümleri&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=keNdLKPi2gQ&quot; title=&quot;FaaS - Serverless (AWS Lambda) Problemleri ve Çözümleri&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/keNdLKPi2gQ/0.jpg&quot; alt=&quot;FaaS - Serverless (AWS Lambda) Problemleri ve Çözümleri&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;AWS Lambda, tam karşılığı FaaS, büyük uygulamaları input ve output olacak şekilde küçük function’lara bölüyoruz. Nerede nasıl hangi serviste çalışacak, scalabilty’si bizi ilgilendirmiyor, bunlarla serverless ilgileniyor. Aslında adı da buradan geliyor, server’ları bizden soyutladığı için serverless deniliyor, yoksa arka planda yine server’larda çalışıyor. AWS Lambda, stateless bir servis. Ayrıca event-driven. Mesela S3’e dosya eklendi, bu create event yaratır, lambda bunu yakalayarak trigger’lanabilir. Event nasıl gelecek, nasıl işleyeceğim diye endişelenmiyorsun, geldiği an işliyorsun ne güzel.&lt;/p&gt;
+
+&lt;p&gt;Lambda Problemleri&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cold Start&lt;/strong&gt;; Initialize olma süresine cold start deniyor. Lambda container’lar üzerinde çalışıyor. Uygulamaya request geldiğinde, lambda önce hazırda varsa ona yonlendiriyor, yoksa yeni container ayağa kaldırıyor. Container’lar hızlı ayağa kalkıyor ama buradaki asıl sorun uygulamanın ayağa kalkması. Mesela spring saniyelerce sürüyor. Bu genelde Java sorunu, Spring’i lambda’ya olduğu gibi taşırsan oooooppppsssss.&lt;/p&gt;
+
+&lt;p&gt;Lambda işi bitince, container’ı freeze ediyor, request gelince tekrar unfreeze ediyor. Belli süre request gelmezse, buna zaten istek gelmiyor deyip kendini kapatıyor. Bu yüzden stateless olsun deniyor lambda’larınız.&lt;/p&gt;
+
+&lt;p&gt;Bazı çözüm yolları;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;İstenilirse istenen sayıda container ayakta tutulur. Negative effect: pricing. Zaten EC2 yerine kullanma nedeni ucuza getirmek, sadece function’ın çalıştığı süredeki kaynaklar için ödeme yapılıyor.&lt;/li&gt;
+  &lt;li&gt;Boş/dummy mesajlar gönderilerek kapanması önlenebilir, warmup.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;At Least One Delivery Problem&lt;/strong&gt;. Tek bir request için bir kez çalışması beklenen function’da, iki kere calısma yaşabiliyor. Çünkü exactly once maliyetli, bunu sunars throughput’u düşüyor. Idempodent işlemler sorun olmaz ama ödeme gibi önemli islemlerde birden fazla olamaz. Distributed, genelde at-least-one sunuluyor, aynı durum standart SQS’te de var.&lt;/p&gt;
+
+&lt;p&gt;Step functions bunu cozuyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lambda&lt;/strong&gt;, çok fazla scale edilirse &lt;em&gt;concurrent&lt;/em&gt; calışarak, on-demand servisere mesela RDS’e birçok connection açılabiliyor. Lambda’da bu, concurrent execution limit ile sınırlanabiliyor, peki ama gercekten scale etmesi gerekirse o zaman edemez. RDS özelinde bu, RDS proxy ile direkt DB’ye connection açmak yerine proxy’e açılarak çözülüyor. Proxy, fiziksel connectionları yönetiyor, bu sayede yükün çoğu proxy’e biniyor.&lt;/p&gt;
+
+&lt;p&gt;OpsGenie 40.000 $’lık fail hikayesi. Cloudwatch’a log geldikçe lambda yakalıyor ve graylog’a gönderiyor.
+Graylog down oluyor. buraya gönderilemeyen mesajlar dead letter queue’da birikiyor. Lambda DLQ’dan tekrar tekrar trigger oluyor. 2 hafta boyunca queue büyüdükçe lambda sürekli scale oluyor. Sonuç 40bin dolar fatura.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Monitoring ve Debugging&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Lambda dışarıdan connection kabul etmiyor. Nedeni VPC, ona adres atamıyor. Ancak API Gateway ile dışarıdan erişilebilir.&lt;/p&gt;
+
+&lt;p&gt;Lambda yalnızca request’i işlerken aktif, o yüzden iş bitince arkada logu gonderecek bir şey yok. Her an ölebilir, donabilir, loglar da gönderilmeden kalabilir. mesela Elasticsearch API ile göndermek uygulamayı ağırlaştırır, o yüzden bir seçenek değil.&lt;/p&gt;
+
+&lt;p&gt;Uygulamada debugging nasıl oluyorr? IDE, uygulamaya network connection açıyor. Debug ile alakalı komutlar, bu TCP connection üzerinden gidiyor. Lambda da dışarıdan bağlanamıyosun, ee? Thundra, bu workaround’da çalışıyor. IDE ve lambda ortada broker’da buluşuyor. Kullanıcılar local IDE’sinden debug edebiliyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@serhatcan/how-aws-lambda-team-made-my-two-years-old-talk-completely-irrelevant-1c74c528ca78&quot; target=&quot;_blank&quot;&gt;How AWS Lambda team made my two years old talk completely irrelevant by Serhat Can&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bulutta Yüksek Performanslı ve Verimli Sistem Tasarlama&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=nuOCuAwQwvo&quot; title=&quot;Bulutta Yüksek Performanslı ve Verimli Sistem Tasarlama&quot;&gt;&lt;img src=&quot;http://img.youtube.com/vi/nuOCuAwQwvo/0.jpg&quot; alt=&quot;Bulutta Yüksek Performanslı ve Verimli Sistem Tasarlama&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Metrics&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;İşler iyi gitmiyorsa problemin nerede olduğu metric’lerden anlaşılır. O yüzden iyi bir sistem tasarlarken metric toplamak, özellikle hangi metric’ler toplanacak önemli. Mesela dışarıya API sunuluyorsa bu metricler latency, erros, CPU/memory/IO olabilir. Latency yüksekse client, sistem performansından memnun olmaz demektir, bu anlaşılır.
+Avg latency’e bakmak outlier’ları gizler, bunun için performansa bakılırken avg latency yerine p90, p99, max latency ile ilgilenilmeli. (p90=percentile 90. x latency ile alakalı metric’lerin yüzde90’ı x altında.)
+Max latency, sistem en kötü durumda ne kadar cevap veriyor demek, bu yüzden max’a başvurmak en iyisi.&lt;/p&gt;
+
+&lt;p&gt;Client Error (HTTP 4xx) ignore edilebilir, ama sık sık gelirse incelenmesi gerekebilir. Server Error (5xx) aslında önemli, bu error’lara alarm kurmak iyi bir pratik.&lt;/p&gt;
+
+&lt;p&gt;Sunucu üzerinde calısan uygulamalar icin CPU/memory/IO. Eğer memory, sınırlarda dolaşıyorsa out-of-memory yemesi işten bile değil. IO, sürekli diske yazan okuyan işlemler, belki bir kere okuyup cacheleyerek disk üzerindeki baskıyı azaltmak yerine sürekli diskten okuma, sistem yavaşlığına sebep olabilir. Bu metric ile anlaşılabilir.&lt;/p&gt;
+
+&lt;p&gt;Servislere özel metricler; redis, lambda, sqs, knesis, dynamodb’a özel metricler. mesela sqs’de # msg visible, bir anda artarsa kuyrukta consume hızı yavaş, ileride sorun yaratabilir uyarı demek. Redis icin eviction (cache belli bir memory sınırına ulaşınca, kendisini sağlıklı tutabilmek için cache’deki varolan itemlar’den evict etme).
+Eviction’ların çok olması, memory’nin yetersiz olduğuna ya da gereksiz yere çoğu şeyi cache’de tuttugumuz anlamına gelebilir.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Caching&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Amaç, optimizasyon ve daha iyi performans. Ne tür cache’lemeler yapılabilir?&lt;/p&gt;
+
+&lt;p&gt;Read’ler icin diske gitmeden de sonuç dönebilme için cache-layer. 
+Cache layer = Local Cache (remote cache’e network call atmasına gerek kalmadan) + Remote Cache(Redis, ElastiCache vb.)&lt;/p&gt;
+
+&lt;p&gt;negative cache , positive cache. cache hata bulunursa kullanıcıya hata mı dönülsün?&lt;/p&gt;
+
+&lt;p&gt;inline cache&lt;/p&gt;
+
+&lt;p&gt;side cache=  cache ve db aynı yerdeyse side cache mesela dax, dynamodb önündeki cache. tek bir layer gibi geliyor.&lt;/p&gt;
+
+&lt;p&gt;Thundering herd problem: Cachede data yok, 100 request aynı anda geldi, 100’ü de aynı anda DB’ye gidecek demek. Bunun yerine cache kısmında, cache’den arka servise erişilirken lock tutulup sadece birisi DB’ye erişebilir. Böylece arkadaki servis boğulmamış olur.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IO&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Async IO ve Non-blocking IO benzer ama detayda farklı. Async için, o thread o işi yapmak i.in baska thread’e paslıyor. Arkadaki işi paylaştığı thread’ler birbirini bekleyeebilir thread pool’da. Mesela 100 thread’lik bir pool. 101. thread pool’u bekleyecek.&lt;/p&gt;
+
+&lt;p&gt;Non-blocking’de, beklemeden ziyade OS seviyesinde select/pool, epoll ile işlemler.&lt;/p&gt;
+
+&lt;p&gt;Connection, elden geldiğince reuse edilmeli. keep-alive. Https için, birden fazla round trip oluyor, mesela sertikayı al gibi bir overhead. http/2, http/1 üzerine avantajlı, client’ın istemesine gerek olmadan server-push mantığı sağlıyor.&lt;/p&gt;
+
+&lt;p&gt;İletişim protokolü uygunsa REST değil de gRPC. gRPC, default http/2 üzerinde. REST, genelde json ve xml formatında ama çok sıkıştırılmış data değil. gRPC’de data size’ı çok küçük, boylece daha az data gidip geldiği icin performanstan kazanılır.&lt;/p&gt;
+
+&lt;p&gt;CDN kullanılmalı. DNS resolution aşamasında, CDN edge seçimi gerceklesiyor. Web sayfası icin ciddi performans sergiliyor, aksi takdirde dünyanın öbür ucuna gidip gelmesi bayağı bir network delay olur.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Redis&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Redis Pipelining: redis’e tek tek gitmek yerine batch ile gitmek. Böylece tek seferde gönderilir, rediste internal olarak tek tek işlenir.&lt;/p&gt;
+
+&lt;p&gt;Persistent olması istenmiyorsa kapatılmalı. RDB snapshot ile, periyodik aralıklarda redisin snapshot’ı diske yazılıyor, default bu var.&lt;/p&gt;
+
+&lt;p&gt;Disk Swap; memorydeki data diske transfer edilirse yavaslık olur, disk swap kapatılması iyi olur.&lt;/p&gt;
+
+&lt;p&gt;Komutun complexity’sinin farkında olunmalı. O(n) gibi bir komut için milyonlara item varsa, bu komut sn’ler sürebilir. Redis’in sitesinde hangi komutun ne kadar karmaşıklıkta olduğu yazıyor.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ElasticSearch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reindex’lemek. Eğer çok fazla update/delete varsa index’i yenilemek icin önemli.
+Yine disk swap edilmeli. Profiling api ile, query planı görülebilir. Query hakkında nasıl çalıştığı hakkında bilgi sağlayarak bir inside verir, yani profiling ile monitoring.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Event-Driven Architecture&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Böyle tasarlanmasının faydası? API, gelen istekle datayı yazmak icin beklememiş olacak. Baska servise delege edecek. Hatta servis, batch olarak yazarak yazdığı servisi daha fazla yormamış olur. Hem de hata durumlarında daha kolay çıkılır.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Replicate&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Kendisine daha yakın storage’den alması. Data locality ve failover mekanizması.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Recover&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sistemin dayanıklı olmasını sağlıyor. Periyodik olarak sistem snapshot’ı alınabilir.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 05 Jul 2020 14:49:00 +0300</pubDate>
+        <link>http://localhost:4000/2020/cloud-and-serverless-turkey-ramazan-ozel/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/cloud-and-serverless-turkey-ramazan-ozel/</guid>
+        
+        <category>software</category>
+        
+        
+        <category>software</category>
+        
+      </item>
     
       <item>
         <title>Java Magazine April 2020 [TR]</title>
@@ -21,8 +236,7 @@
 
 &lt;p&gt;Aslında yukarıdaki akışın, Spring üzerine kurulu mikroservislerde CDC testleri koşturmak için yazılmış Spring Cloud Contract kütüphanesinden farkı yok.&lt;/p&gt;
 
-&lt;p&gt;Pact, JUnit test framework’ü ve Maven/Gradle gibi build tool’ları ile sıkı sıkıya entegrasyona sahip.
-Consumer tarafında testi hazırlamak için Pact extension’ı ve bir annotation yeterli. Bu extension ile, Mock Http server ayarlanır ve pact contract file oluşturulur. @Pact annotation ile de, iletişimdeki input/output expectation’lar tanımlanır.&lt;/p&gt;
+&lt;p&gt;Pact, JUnit test framework’ü ve Maven/Gradle gibi build tool’ları ile sıkı sıkıya entegrasyona sahip. Consumer tarafında testi hazırlamak için Pact extension’ı ve bir annotation yeterli. Bu extension ile, Mock Http server ayarlanır ve pact contract file oluşturulur. @Pact annotation ile de, iletişimdeki input/output expectation’lar tanımlanır.&lt;/p&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@Rule 
 public PactProviderRule mockProvider = new PactProviderRule(&quot;test_provider&quot;, &quot;localhost&quot;, 8080, this);
@@ -37,30 +251,27 @@ public PactFragment createFragment(PactDslWithProvider builder) {
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Provider tarafındaki testte contract’ları doğrulamak için JUnit testi yada maven pluginleri kullanılabilir.
-Maven plugin ile, pact broker url’i ile yayınlanan contract’lar çekilir, mvn pact:verify ile doğrulanır.&lt;/p&gt;
+&lt;p&gt;Provider tarafındaki testte contract’ları doğrulamak için JUnit testi yada maven pluginleri kullanılabilir. Maven plugin ile, pact broker url’i ile yayınlanan contract’lar çekilir, mvn pact:verify ile doğrulanır.&lt;/p&gt;
 
 &lt;p&gt;Pact State’ler ile, consumer ve provider arasında bilgi paylaşımı sağlanır, böylece provider’da testler başlamadan önce provider’a özgü ayarlamalar yapılır. Mesela ne gibi? Veritabanında benim gönderdiğim verileri ekleyerek test işlemini bu veriler üzerinden gerçekleştir gibi.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;JUnit5&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;JUnit4’den 5’e geçerken testleri yeniden düzenleyebileceğinizi düşünebilirsiniz, fakat JUnit5, JUnit4 testlerini
-Vintage library kullanarak çalıştırabilir. böylece eskiler üzerinde yoğunlaşmadan sadece yeni testler JUnit5
-kullanılarak yazılabilir.&lt;/p&gt;
+&lt;p&gt;JUnit4’den 5’e geçerken testleri yeniden düzenleyebileceğinizi düşünebilirsiniz, fakat JUnit5, JUnit4 testlerini Vintage library kullanarak çalıştırabilir. böylece eskiler üzerinde yoğunlaşmadan sadece yeni testler JUnit5 kullanılarak yazılabilir.&lt;/p&gt;
 
 &lt;p&gt;Farklar&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;importlar org.junit yerine org.junit.jupiter.api package altında&lt;/li&gt;
   &lt;li&gt;@Test annotasyonu parametre almak yerine, özel assertions fonksiyonlara bırakıldı. mesela test sonucu beklenen hatayı belirtmek için expected property yerine assertThrows yada assertDoesNotThrow ile bu kontrol yapılacak.&lt;/li&gt;
-  &lt;li&gt;annotation isimlendirmeleri değişti. mesela before ve beforeclass daha anlaşılabilir hale getirilmiş. 
-before -&amp;gt; beforeEach, beforeClass -&amp;gt; beforeAll, ignore -&amp;gt; disabled, category -&amp;gt; tag.&lt;/li&gt;
-  &lt;li&gt;assertions altındaki hata mesajları son arguman olarak geçiliyor. assertion fail olması durumunda
-error mesajı hazırlamak için lambda kabul edebilecekler.&lt;/li&gt;
+  &lt;li&gt;annotation isimlendirmeleri değişti. mesela before ve beforeclass daha anlaşılabilir hale getirilmiş. before -&amp;gt; beforeEach, beforeClass -&amp;gt; beforeAll, ignore -&amp;gt; disabled, category -&amp;gt; tag.&lt;/li&gt;
+  &lt;li&gt;assertions altındaki hata mesajları son arguman olarak geçiliyor. assertion fail olması durumunda error mesajı hazırlamak için lambda kabul edebilecekler.&lt;/li&gt;
   &lt;li&gt;assumptionlarda, condition karşılaşırsa çalışıtırılacak code lambda ile sağlanabilir hale gelebilir.&lt;/li&gt;
   &lt;li&gt;JUnit’de framework’ü yapılandırmak icin RunWith kullanarak extension’lar belirtiliyor, mesela @RunWith(SpringJUnit4ClassRunner.class). JUnit4’de her class için yalnız bir tane extension belirtilebiliyorken, daha fazlası için Rule ve ClassRule annotation’lı değişkenler tanımlamak gerekiyordu. JUnit5 ile extensionlar geliştirildi. Artık RunWith/Rule ve Classsrule yerine, ExtendWith ve RegisterExtension ile birçok extension kullanılabilir.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Yeni Eklenenler&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;@DisplayName. sınıf ve test-case’lerden önce, amaçlarını belirtmek için kullanılır.&lt;/li&gt;
   &lt;li&gt;@Test propertylerini karşılayacak yeni assertions methodları.&lt;/li&gt;
@@ -79,16 +290,13 @@ public void test(String args) {}
 &lt;p&gt;&lt;strong&gt;Micronaut ve SSE&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Bu iki konu üzerine bir örnek geliştirme yazısı var, bu ikisini ilk defa duydum.&lt;/p&gt;
-
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Micronaut is a modern, JVM-based, full-stack framework for building modular,  easily testable microservice and serverless applications. Micronaut has built-in support for Kafka, RabbitMQ, and two HTML5 messaging paradigms: server-sent events (SSE) and WebSocket. 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
 &lt;p&gt;Micronaut, Spring Boot ile karşılaştırıldığında daha hızlı ayağa kalkma (runtime yerine compile time dependency injection’dan dolayı), daha düşük memory tüketimi ve daha fazla isteğe cevap verebilme kabiliyetine sahip.&lt;/p&gt;
 
 &lt;p&gt;SSE(Server-Sent Events), WebSocket’e benzer bir yapı. İkisi de push technology, fakat WebSocket’te bi-directional veri akışı varken, SSE’de sadece server’dan client tarafına veri akışı var.&lt;/p&gt;
-
 </description>
-        <pubDate>Sun, 19 Apr 2020 14:19:23 +0300</pubDate>
+        <pubDate>Sun, 19 Apr 2020 17:19:00 +0300</pubDate>
         <link>http://localhost:4000/2020/java-magazine-april-2020/</link>
         <guid isPermaLink="true">http://localhost:4000/2020/java-magazine-april-2020/</guid>
         
@@ -196,7 +404,7 @@ JFR event streaming ile, JFR event’lar meydana geldiğinde callback alınır v
 
 &lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Yukarıdaki tüm bilgiler Java Magazin’in Mart 2020 sayısını okurken kendime özet olması ve gelecekte hatırlamam için çıkardığım/yorumladığım ve türkçeye çevirdiğim bilgilerdir. Orjinal yazılar için &lt;a href=&quot;https://blogs.oracle.com/javamagazine/?source=:em:nw:mt::RC_WWMK190726P00001:NSL400037924&amp;amp;elq_mid=157128&amp;amp;sh=2320221411180624101924012335&amp;amp;cmid=WWMK190726P00001C0007&quot;&gt;adresi&lt;/a&gt; ziyaret edebilirsiniz.&lt;/p&gt;
+&lt;p&gt;Yukarıdaki tüm bilgiler Java Magazin’in Şubat 2020 sayısını okurken kendime özet olması ve gelecekte hatırlamam için çıkardığım/yorumladığım ve türkçeye çevirdiğim bilgilerdir. Orjinal yazılar için &lt;a href=&quot;https://blogs.oracle.com/javamagazine/?source=:em:nw:mt::RC_WWMK190726P00001:NSL400037924&amp;amp;elq_mid=157128&amp;amp;sh=2320221411180624101924012335&amp;amp;cmid=WWMK190726P00001C0007&quot;&gt;adresi&lt;/a&gt; ziyaret edebilirsiniz.&lt;/p&gt;
 
 &lt;p&gt;Tüm özellikleri denedikçe ekstra bilgiler eklemeye çalışacağım.&lt;/p&gt;
 

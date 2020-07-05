@@ -52,7 +52,7 @@
   <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
   <meta name="theme-color" content="#ffffff">
   
-  <link rel="stylesheet" href="/css/main.css?1587297163819103600">
+  <link rel="stylesheet" href="/css/main.css?1593960525623777100">
   <link rel="canonical" href="http://localhost:4000/2020/java-magazine-april-2020/">
   <link rel="alternate" type="application/rss+xml" title="Deniz G" href="/feed.xml">
 </head>
@@ -141,7 +141,7 @@
         <article class="post-container post-container--single">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2020-04-19 14:19" class="post-meta__date date">19 Apr 2020</time>
+      <time datetime="2020-04-19 17:19" class="post-meta__date date">19 Apr 2020</time>
       
       &#8226; <span class="post-meta__tags">on <a href="/tags/#programming">programming</a></span>
       
@@ -160,8 +160,7 @@
 
 <p>Aslında yukarıdaki akışın, Spring üzerine kurulu mikroservislerde CDC testleri koşturmak için yazılmış Spring Cloud Contract kütüphanesinden farkı yok.</p>
 
-<p>Pact, JUnit test framework’ü ve Maven/Gradle gibi build tool’ları ile sıkı sıkıya entegrasyona sahip.
-Consumer tarafında testi hazırlamak için Pact extension’ı ve bir annotation yeterli. Bu extension ile, Mock Http server ayarlanır ve pact contract file oluşturulur. @Pact annotation ile de, iletişimdeki input/output expectation’lar tanımlanır.</p>
+<p>Pact, JUnit test framework’ü ve Maven/Gradle gibi build tool’ları ile sıkı sıkıya entegrasyona sahip. Consumer tarafında testi hazırlamak için Pact extension’ı ve bir annotation yeterli. Bu extension ile, Mock Http server ayarlanır ve pact contract file oluşturulur. @Pact annotation ile de, iletişimdeki input/output expectation’lar tanımlanır.</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Rule 
 public PactProviderRule mockProvider = new PactProviderRule("test_provider", "localhost", 8080, this);
@@ -176,30 +175,27 @@ public PactFragment createFragment(PactDslWithProvider builder) {
 }
 </code></pre></div></div>
 
-<p>Provider tarafındaki testte contract’ları doğrulamak için JUnit testi yada maven pluginleri kullanılabilir.
-Maven plugin ile, pact broker url’i ile yayınlanan contract’lar çekilir, mvn pact:verify ile doğrulanır.</p>
+<p>Provider tarafındaki testte contract’ları doğrulamak için JUnit testi yada maven pluginleri kullanılabilir. Maven plugin ile, pact broker url’i ile yayınlanan contract’lar çekilir, mvn pact:verify ile doğrulanır.</p>
 
 <p>Pact State’ler ile, consumer ve provider arasında bilgi paylaşımı sağlanır, böylece provider’da testler başlamadan önce provider’a özgü ayarlamalar yapılır. Mesela ne gibi? Veritabanında benim gönderdiğim verileri ekleyerek test işlemini bu veriler üzerinden gerçekleştir gibi.</p>
 
 <p><strong>JUnit5</strong></p>
 
-<p>JUnit4’den 5’e geçerken testleri yeniden düzenleyebileceğinizi düşünebilirsiniz, fakat JUnit5, JUnit4 testlerini
-Vintage library kullanarak çalıştırabilir. böylece eskiler üzerinde yoğunlaşmadan sadece yeni testler JUnit5
-kullanılarak yazılabilir.</p>
+<p>JUnit4’den 5’e geçerken testleri yeniden düzenleyebileceğinizi düşünebilirsiniz, fakat JUnit5, JUnit4 testlerini Vintage library kullanarak çalıştırabilir. böylece eskiler üzerinde yoğunlaşmadan sadece yeni testler JUnit5 kullanılarak yazılabilir.</p>
 
 <p>Farklar</p>
+
 <ul>
   <li>importlar org.junit yerine org.junit.jupiter.api package altında</li>
   <li>@Test annotasyonu parametre almak yerine, özel assertions fonksiyonlara bırakıldı. mesela test sonucu beklenen hatayı belirtmek için expected property yerine assertThrows yada assertDoesNotThrow ile bu kontrol yapılacak.</li>
-  <li>annotation isimlendirmeleri değişti. mesela before ve beforeclass daha anlaşılabilir hale getirilmiş. 
-before -&gt; beforeEach, beforeClass -&gt; beforeAll, ignore -&gt; disabled, category -&gt; tag.</li>
-  <li>assertions altındaki hata mesajları son arguman olarak geçiliyor. assertion fail olması durumunda
-error mesajı hazırlamak için lambda kabul edebilecekler.</li>
+  <li>annotation isimlendirmeleri değişti. mesela before ve beforeclass daha anlaşılabilir hale getirilmiş. before -&gt; beforeEach, beforeClass -&gt; beforeAll, ignore -&gt; disabled, category -&gt; tag.</li>
+  <li>assertions altındaki hata mesajları son arguman olarak geçiliyor. assertion fail olması durumunda error mesajı hazırlamak için lambda kabul edebilecekler.</li>
   <li>assumptionlarda, condition karşılaşırsa çalışıtırılacak code lambda ile sağlanabilir hale gelebilir.</li>
   <li>JUnit’de framework’ü yapılandırmak icin RunWith kullanarak extension’lar belirtiliyor, mesela @RunWith(SpringJUnit4ClassRunner.class). JUnit4’de her class için yalnız bir tane extension belirtilebiliyorken, daha fazlası için Rule ve ClassRule annotation’lı değişkenler tanımlamak gerekiyordu. JUnit5 ile extensionlar geliştirildi. Artık RunWith/Rule ve Classsrule yerine, ExtendWith ve RegisterExtension ile birçok extension kullanılabilir.</li>
 </ul>
 
 <p>Yeni Eklenenler</p>
+
 <ul>
   <li>@DisplayName. sınıf ve test-case’lerden önce, amaçlarını belirtmek için kullanılır.</li>
   <li>@Test propertylerini karşılayacak yeni assertions methodları.</li>
@@ -218,14 +214,11 @@ public void test(String args) {}
 <p><strong>Micronaut ve SSE</strong></p>
 
 <p>Bu iki konu üzerine bir örnek geliştirme yazısı var, bu ikisini ilk defa duydum.</p>
-
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Micronaut is a modern, JVM-based, full-stack framework for building modular,  easily testable microservice and serverless applications. Micronaut has built-in support for Kafka, RabbitMQ, and two HTML5 messaging paradigms: server-sent events (SSE) and WebSocket. 
 </code></pre></div></div>
-
 <p>Micronaut, Spring Boot ile karşılaştırıldığında daha hızlı ayağa kalkma (runtime yerine compile time dependency injection’dan dolayı), daha düşük memory tüketimi ve daha fazla isteğe cevap verebilme kabiliyetine sahip.</p>
 
 <p>SSE(Server-Sent Events), WebSocket’e benzer bir yapı. İkisi de push technology, fakat WebSocket’te bi-directional veri akışı varken, SSE’de sadece server’dan client tarafına veri akışı var.</p>
-
 
   </section>
   
@@ -240,7 +233,7 @@ public void test(String args) {}
 </footer>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="/js/main.js?1587297163819103600"></script>
+<script type="text/javascript" src="/js/main.js?1593960525623777100"></script>
 
 
     </div>

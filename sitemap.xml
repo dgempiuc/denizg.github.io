@@ -3,9 +3,24 @@
   
     
     <url>
+      <loc>http://localhost:4000/2020/cloud-and-serverless-turkey-ramazan-ozel/</loc>
+      
+        <lastmod>2020-07-05T14:49:00+03:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+    
+    <url>
       <loc>http://localhost:4000/2020/java-magazine-april-2020/</loc>
       
-        <lastmod>2020-04-19T14:19:23+03:00</lastmod>
+        <lastmod>2020-04-19T17:19:00+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -128,7 +143,7 @@
     <url>
       <loc>http://localhost:4000/feed.xml</loc>
       
-        <lastmod>2020-04-19T14:52:43+03:00</lastmod>
+        <lastmod>2020-07-05T17:48:45+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -143,7 +158,7 @@
     <url>
       <loc>http://localhost:4000/humans.txt</loc>
       
-        <lastmod>2020-04-19T14:52:43+03:00</lastmod>
+        <lastmod>2020-07-05T17:48:45+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -162,7 +177,7 @@
     <url>
       <loc>http://localhost:4000/css/main.css</loc>
       
-        <lastmod>2020-04-19T14:52:43+03:00</lastmod>
+        <lastmod>2020-07-05T17:48:45+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -181,7 +196,7 @@
     <url>
       <loc>http://localhost:4000/assets/css/style.css</loc>
       
-        <lastmod>2020-04-19T14:52:43+03:00</lastmod>
+        <lastmod>2020-07-05T17:48:45+03:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
