@@ -5,13 +5,15 @@
     <description>Blog about Software on Bilingual-Turkish and English.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 15 Jul 2020 22:29:50 +0300</pubDate>
-    <lastBuildDate>Wed, 15 Jul 2020 22:29:50 +0300</lastBuildDate>
+    <pubDate>Wed, 15 Jul 2020 22:33:58 +0300</pubDate>
+    <lastBuildDate>Wed, 15 Jul 2020 22:33:58 +0300</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>DevOpsDays Turkey &amp; AWS Community Day Turkey [TR]</title>
-        <description>&lt;p&gt;Geçen 1 ay içerisinde online olarak 2 farklı etkinlik düzenlendi. Etkinliklerde aldığım notları, belki birilerine faydası olur diye burada paylaşıyorum. Kimse bakmasa bile en azından kendime not bırakmış olur, ileride hatırlamak amaçlı göz gezdiririm düşüncesindeyim.&lt;/p&gt;
+        <description>&lt;p&gt;Geçen 1 ay içerisinde online olarak 2 farklı etkinlik düzenlendi.&lt;/p&gt;
+
+&lt;p&gt;Etkinliklerde aldığım notları, belki birilerine faydası olur diye burada paylaşıyorum. Kimse bakmasa bile en azından kendime not bırakmış olur, ileride hatırlamak amaçlı göz gezdiririm düşüncesindeyim.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;25 Haziran 2020 - DevOpsDays Turkey &lt;a href=&quot;https://devopsdays.istanbul/&quot;&gt;Etkinlik Sayfası&lt;/a&gt;&lt;/li&gt;
