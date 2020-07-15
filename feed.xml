@@ -5,9 +5,186 @@
     <description>Blog about Software on Bilingual-Turkish and English.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 05 Jul 2020 17:48:45 +0300</pubDate>
-    <lastBuildDate>Sun, 05 Jul 2020 17:48:45 +0300</lastBuildDate>
+    <pubDate>Wed, 15 Jul 2020 22:29:50 +0300</pubDate>
+    <lastBuildDate>Wed, 15 Jul 2020 22:29:50 +0300</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>DevOpsDays Turkey &amp; AWS Community Day Turkey [TR]</title>
+        <description>&lt;p&gt;Geçen 1 ay içerisinde online olarak 2 farklı etkinlik düzenlendi. Etkinliklerde aldığım notları, belki birilerine faydası olur diye burada paylaşıyorum. Kimse bakmasa bile en azından kendime not bırakmış olur, ileride hatırlamak amaçlı göz gezdiririm düşüncesindeyim.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;25 Haziran 2020 - DevOpsDays Turkey &lt;a href=&quot;https://devopsdays.istanbul/&quot;&gt;Etkinlik Sayfası&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;11 Temmuz 2020 - AWS Community Day Turkey &lt;a href=&quot;https://aws.cloudturkey.io/&quot;&gt;Etkinlik Sayfası&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;DevOpsDays&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Öncelikle keynote içeriği oldukça basit ve giriş niteliğindeydi, DevOps’tan ziyade programlama üzerinden ilerledi, en son da DevOps’a bağlamak amacıyla 5 dk Azure üzerinde deployment’a girişildi. Fakat, benim gibi C#, .NET hakkında herhangi bir bilgisi olmayanlar için yararlı olduğunu belirtmeliyim.&lt;/p&gt;
+
+&lt;p&gt;Windows CLI nasıl daha güzel ve etkili kullanılabilir hakkında bir blog yazısı&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.hanselman.com/blog/HowToMakeAPrettyPromptInWindowsTerminalWithPowerlineNerdFontsCascadiaCodeWSLAndOhmyposh.aspx&quot; target=&quot;_blank&quot;&gt;How to make a pretty prompt in Windows Terminal with Powerline, Nerd Fonts, Cascadia Code, WSL, and oh-my-posh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;start . -&amp;gt; cmd’de o an bulunan yerin klasörünü açar.&lt;/p&gt;
+
+&lt;p&gt;.NET = .NET Framework + .NET Core + Xamarin&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Framework for Windows Applications&lt;/li&gt;
+  &lt;li&gt;Core for Cross-Platfrom Services&lt;/li&gt;
+  &lt;li&gt;Xamarin for Mobile Applications&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;.NET 6 ile bunların hepsi birleştiriliyor, yani artık .NET, hepsini içeren tek bir şey. her yıl major release gelecek, her çift numaralı release’de de LTS(Long Term Support) olacak.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;dotnet new -&amp;gt; yapılabilecek uygulama listesini verir.&lt;/li&gt;
+  &lt;li&gt;dotnet run -&amp;gt; mvn clean install gibi. delete, build and run demek. bin altınad dll(dynamic link library) ve exe yaratır. exe’nin boyutu dll’e göre çok büyük. technical olarak exe’ye gerek yok, tek başına dll ile de program çalıştırılabilir.&lt;/li&gt;
+  &lt;li&gt;dotnet publish -&amp;gt; öyle dosyalar olusturuyor ki artık çalıştırmak icin bilgisayarda dotnet yüklü olması
+gerekmiyor.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cloud Native dünyada CI/CD&lt;/p&gt;
+
+&lt;p&gt;Cloud Native nedir? CNCF tarafından tanımlanan tanımı, kendisi dinlemekten her zaman zevk aldığım Fatih Arslan’ın anlatımıyla şöyle &lt;a href=&quot;https://www.youtube.com/watch?v=UV3C9pgWgRU&quot; target=&quot;_blank&quot;&gt;iliştireyim.&lt;/a&gt; Cloud Native, aşağıdakileri sağlayan uygulamalara deniyor.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Open-Source: Tamamen open-source yazılımlar kullanılacak.&lt;/li&gt;
+  &lt;li&gt;Microservices: Uygulamalar mikroservis mimarisinde olacak.&lt;/li&gt;
+  &lt;li&gt;Containers: Paketleme container’lar ile olacak.&lt;/li&gt;
+  &lt;li&gt;Orchestrators: Container’lar Orchestrator’lar ile dinamik yönetilecek.&lt;/li&gt;
+  &lt;li&gt;Optimum Kaynak Tüketimi&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;S2S = Service to Service Communications&lt;/p&gt;
+
+&lt;p&gt;LocalStack: AWS servislerini local’de, Open Source araçlarla simüle ederek kullanmaya izin verir. Mesela S3’ü gerçekten de AWS’de denemek istemediğim durumda iş görür.&lt;/p&gt;
+
+&lt;p&gt;Containerlar ile process’lerin birbirine bulaşmadığına, dosya sistemlerini paylaşmadığına emin oluyoruz.&lt;/p&gt;
+
+&lt;p&gt;DevOps ile, deployment aşamasında acaba şunu update ettik mi vb süreçleri insanlara bırakmadan otomatize ediyoruz.&lt;/p&gt;
+
+&lt;p&gt;From Sasha Rosenbaum on Microsoft DevOps Journey&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Meaure Results, Not Activity&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Horizontal Reposibility yerine Vertical. Yani Developer, SRE, DevOps takımları yok. Her title’ı içinde bulunduran takımlar var, Self Forming Teams.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sürekli Test Ortamlarında Test Güvenilirliğini Sağlamak?&lt;/p&gt;
+
+&lt;p&gt;MLOps: Machine Learning Ops. makine öğrenmesi desteği&lt;/p&gt;
+
+&lt;p&gt;Smell= Zayıflık. İleride başımızın belası olabilir, sorun durumunda anlaması saatlerimizi alabilir. Feature çalışıyor ama beklendiğinden farklı path’de calışıyor, göremiyoruz ama calışıyor görünüyor. Test Smells’ler kaldırılmalı.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Flaky Tests: Bir çalışır bir çalışmaz.&lt;/li&gt;
+  &lt;li&gt;Fragile Tests: Çalışıyorsa dokunmayacaksın, dokunursan biter.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;False alarm: Status of feature -&amp;gt; Pass, Execution results -&amp;gt; Fail.&lt;/p&gt;
+
+&lt;p&gt;Cleanup ile ardışık testler arasındaki çalışmalarda güvenlik yaratabilir. Spring’deki @DirtiesContext mesela.&lt;/p&gt;
+
+&lt;video autoplay=&quot;autoplay&quot; loop=&quot;loop&quot; muted=&quot;&quot;&gt;
+  &lt;source src=&quot;/images/posts/client.mp4&quot; type=&quot;video/mp4&quot; /&gt;
+&lt;/video&gt;
+
+&lt;p&gt;Müşteri her zaman beklemeyeni deneyecektir, senin gibi ortama alışık degil. Neyi nasıl yağacağını
+bilmiyor ve ilk defa deniyor.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/code-review.png&quot; alt=&quot;code-review&quot; title=&quot;Code Review&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Code Review :D&lt;/p&gt;
+
+&lt;p&gt;SRE, bir yazılımcıdan operasyon yapmasını istemeniz.&lt;/p&gt;
+
+&lt;p&gt;SRE Prensipleri&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;SLI/SLO: Service-Level Indicator. Canlıda yayında olan servisin nasıl ve ne şekilde calıstıgıyla ilgili
+bilgiler veren ölçülebilir metricler. Service-Level Objective. SLI ile toplanan metriclere koyulan hedefler.
+Mesela erişebilirlik SLI’yi için /user api’si kaç ms’de cevap veriyor? SLO, bu adrese gelen %99 isteğin 50ms altında olması gibi bir heref. Böylece ne kadar başarılıyız raporlayabiliriz. Çünkü şu an herşey data.&lt;/li&gt;
+  &lt;li&gt;Hata Bütçesi: Hedeflerin dışında kaldığımız süre ne kadar olabilir? Yani SLO ihlalleri. Bu sistemde hata olabilir demek, bunun sonunca ihlal neredeyse orada iyileştirme yapmamız gerektiğini söyler.&lt;/li&gt;
+  &lt;li&gt;Otomasyon: Yarını bugünden daha iyi hale getiren şeyleri makineye yaptırmak.&lt;/li&gt;
+  &lt;li&gt;Monitoring: Yayına alınan servislerin içeriden ve dışarıdan metric’lerle sürekli gözlenmesi.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;SRE’in bir diğer yaptıgı iş, felaket senaryolarında sistemi nasıl ayakta tutacak?&lt;/p&gt;
+
+&lt;p&gt;%50-%50 zamanı nasıl kontrol ediliyor? %50’yi geçince ne oluyor? Bu olay, Twitter’da insanların kendi kontrolünde, herkes kendini buna göre ayarlıyor. (%50 mevzusunu bir önceki yazımda yazdım.)&lt;/p&gt;
+
+&lt;p&gt;DevOps Aktiviteleri&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dev ve Ops gruplaşmasının önüne geçmek, çatışma yerine grup olarak çalışarak istenilen hedefe ulaşmak.&lt;/li&gt;
+  &lt;li&gt;Sistemde oluşacak hataları normal kabul etmek. Hata bütçeleriyle belirli seviyede kabul edilebilir. Ama amaç, bütçenin olabildiğince altında oldurması.&lt;/li&gt;
+  &lt;li&gt;Değişilikleri ufak parçalar halinde (canary release gibi tekniklerle) yayına almak.&lt;/li&gt;
+  &lt;li&gt;Otomasyondan yararlanmak.&lt;/li&gt;
+  &lt;li&gt;Herşeyi ölçmek. SRE’de realibility üzerine ölçümler olurken burada herşey olabilir.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;kitap önerisi: &lt;a href=&quot;https://books.google.com.tr/books/about/The_DevOps_Handbook.html?id=XrQcrgEACAAJ&amp;amp;redir_esc=y&quot; target=&quot;_blank&quot;&gt;“The DevOps Handbook”&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;AWS Community Day&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Bootstapped company: kendi kaynaklarıyla kurulan ve daha sonra yarattığı gelirlerle ayakta olan şirketler.&lt;/p&gt;
+
+&lt;p&gt;Startuplarda hızlı hareket edebilmek gerekiyor, aynı anda birçok şey denemek gerekiyor. İşler değişiyor, adapte olup hızlı şekilde teknoloji geliştirip piyasaya gidememek büyük faktör, bu yüzden bir an önce cloud’a geçip etkili şekilde kullanmak zorundalar.&lt;/p&gt;
+
+&lt;p&gt;metadata: data about data&lt;/p&gt;
+
+&lt;p&gt;US East - North Virginia. Amazon’un en eski region’ı ve tüm yeni özellikler burada release edilir.&lt;/p&gt;
+
+&lt;p&gt;Amazon Forecast: Machine Learning kullanarak tahminler yapan AWS servisi.&lt;/p&gt;
+
+&lt;p&gt;RDS, veritabanı değil veritabanlarını yöneten bir servistir.&lt;/p&gt;
+
+&lt;p&gt;Tuning: performans ayarlama&lt;/p&gt;
+
+&lt;p&gt;S3 tiered storage; Standart, IA (infrequently accessed), Glacier vb.&lt;/p&gt;
+
+&lt;p&gt;CloudTrail: Audit loglar. Servislere, hangi IP’den, hangi kullanıcılardan, hangi istekler geldi.&lt;/p&gt;
+
+&lt;p&gt;AWS-Managed key’ler sadece symmetric key’leri desteklerken, Customer-Managed key’ler hem symmetric hem de asymmetric olabilir.&lt;/p&gt;
+
+&lt;p&gt;Amazon EKS (Elastic Kubernetes Service): full-managed kubernetes servisi. böylece ölçeklenebilir ve erişilebilir container yönetimi.&lt;/p&gt;
+
+&lt;p&gt;AWS Fargate: Serverless Container, yani EC2 gibi VM ihtiyacı duymadan anında container deployment’ı.&lt;/p&gt;
+
+&lt;p&gt;EKS ve Fargate, ekstra ayar yapmadan birlikte kullanılabilir.&lt;/p&gt;
+
+&lt;p&gt;Amazon ECR (Elastic Container Registry)’den Fargate’e “image pull” and “then run”.&lt;/p&gt;
+
+&lt;p&gt;AWS CDK (Cloud Development Kit): Yeni nesil IaC (Infrastructure as Code) oluşturma. Hali hazırda CloudFormation bu işi zaten yapıyordu. CDK, altında yine CloudFormation’ı kullanıyor fakat bu IaC, bildiğimiz yollardan, tıpkı yazılım geliştiriyormuşuz gibi (desteklenen diller: typescript, python, java, .net) ile oluyor.  CloudFormation öğrenmeye gerek kalmadan olusturmayı sağlıyor. En sonda bu oluşturulan şeyler, CloudFormation’a derleniyor ve AWS’de CloudFormation engine’e gönderiliyor.&lt;/p&gt;
+
+&lt;p&gt;EC2 instance giderleri, spot instance (datacenterda bulunan ve kullanımda olmayan instacelar) kullanılarak (instance tipine göre farklı ve anlık değişen indirimler) %90’a kadar azaltılabilir.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://aws.amazon.com/tr/ec2/spot/instance-advisor/&quot; target=&quot;_blank&quot;&gt;“spot instance’ların kapatılma sıklığı oranları”&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/awslabs&quot; target=&quot;_blank&quot;&gt;“https://github.com/awslabs”&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;SNS Fanout: bir mesajın, ona abone olan birçok yere gönderilmesi.&lt;/p&gt;
+
+&lt;p&gt;Event-Driven Architecture Patterns&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Event Notifications: bir sistemdeki değişikliği diğer sistemlere aktarma.&lt;/li&gt;
+  &lt;li&gt;Event-Carried State Transfer: önceki state’im bu, şimdiki state’im bu bilgilerinin ikisini birlikte aktarma.&lt;/li&gt;
+  &lt;li&gt;Event Sourcing: event logları üzerinden uygulamanın o andaki state’ini elde etme.&lt;/li&gt;
+  &lt;li&gt;CQRS: Event sourcing üzerinde sistem büyüdükçe yönetimi kolaylaştırmak için query ve command işlemlerini ayırma.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 15 Jul 2020 21:26:00 +0300</pubDate>
+        <link>http://localhost:4000/2020/devopsdays-tr-and-aws-community-day/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020/devopsdays-tr-and-aws-community-day/</guid>
+        
+        <category>software</category>
+        
+        
+        <category>software</category>
+        
+      </item>
     
       <item>
         <title>Cloud and Serverless Turkey Ramazan Özel [TR]</title>
