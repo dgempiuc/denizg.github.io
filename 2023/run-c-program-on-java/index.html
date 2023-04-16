@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <title>Run C program on Java</title>
+  <meta name="description" content="I will make a confession. Although I am an OCA/OCP Java programmer, I just learned what native methods are.
+
+">
+  <meta name="author" content="denizg">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Run C program on Java">
+  <meta name="twitter:description" content="I will make a confession. Although I am an OCA/OCP Java programmer, I just learned what native methods are.
+
+">
+  
+  <meta name="twitter:image" content="/images/favicons/favicon-194x194.png" />
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Run C program on Java">
+  <meta property="og:description" content="I will make a confession. Although I am an OCA/OCP Java programmer, I just learned what native methods are.
+
+">
+  <meta property="og:image" content="/images/favicons/favicon-194x194.png" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/images/favicons/manifest.json">
+  <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#ffc40d">
+  <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" href="/css/main.css?1681656674222981100">
+  <link rel="canonical" href="http://localhost:4000/2023/run-c-program-on-java/">
+  <link rel="alternate" type="application/rss+xml" title="Deniz G" href="/feed.xml">
+</head>
+
+
+  <body>
+    <span class="mobile btn-mobile-menu">
+  <i class="icon icon-list btn-mobile-menu__icon"></i>
+  <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+</span>
+
+<header class="panel-cover" style="background-image: url(/images/cover.jpg)">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+        <a href="/" title="link to home of Deniz G">
+          <img src="/images/profile.jpg" class="user-image" alt="My Profile Photo">
+          <h1 class="panel-cover__title panel-title">Deniz G</h1>
+        </a>
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">Bilingual Blog: Turkish and English on Software and Life.</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="link to Deniz G blog" class="blog-button">Blog</a></li>
+            </ul>
+          </nav>
+
+          <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+
+            
+
+            
+
+            
+
+            
+              <!-- GitHub -->
+              <li class="navigation__item">
+                <a href="https://www.github.com/dgempiuc" title="dgempiuc on GitHub" target="_blank">
+                  <i class="icon icon-social-github"></i>
+                  <span class="label">GitHub</span>
+                </a>
+              </li>
+            
+
+            
+              <!-- Email -->
+              <li class="navigation__item">
+                <a href="mailto:dgempiuc@gmail.com" title="Email dgempiuc@gmail.com" target="_blank">
+                  <i class="icon icon-mail"></i>
+                  <span class="label">Email</span>
+                </a>
+              </li>
+            
+
+            <!-- RSS -->
+            <li class="navigation__item">
+              <a href="/feed.xml" title="Subscribe" target="_blank">
+                <i class="icon icon-rss"></i>
+                <span class="label">RSS</span>
+              </a>
+            </li>
+
+            </ul>
+          </nav>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+      <div class="content-wrapper__inner">
+        <article class="post-container post-container--single">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2023-04-16 17:33" class="post-meta__date date">16 Apr 2023</time>
+      
+      &#8226; <span class="post-meta__tags">on <a href="/tags/#programming">programming</a></span>
+      
+    </div>
+    <h1 class="post-title">Run C program on Java</h1>
+  </header>
+
+  <section class="post">
+    <p>I will make a confession. Although I am an OCA/OCP Java programmer, I just learned what native methods are.</p>
+
+<p>One day, I wondered about the implementation of hashCode in the Object class and saw that it has no implementation and 
+it uses the native keyword. The native keyword specifies that a method is implemented in another language, not Java. 
+Platform dependent native code (compiled code) is dynamically called by Java and the result of these methods is returned to Java.
+This feature is called JNI (Java Native Interface). So somewhere in the JVM, 
+there is a hashCode code written in non-Java language (probably C/C++).
+So I will try to write C code and run it in Java.</p>
+
+<p><strong>Writing C</strong></p>
+
+<p>I will implement stack in the sample C program. This program will
+includes 2 parts; <strong><em>stack header file</em></strong> which includes method definitions, <strong><em>stack c file</em></strong>
+which includes header implementation.</p>
+
+<p><strong><code>Stack.h</code></strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#ifndef STACK_H_
+#define STACK_H_
+
+void push(int data);
+void pop();
+void display();
+
+#endif
+</code></pre></div></div>
+
+<p><strong><code>Stack.c</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "Stack.h"
+
+struct node {
+    int info;
+    struct node *ptr;
+} *top;
+
+void push(int data) {
+    struct node* temp = (struct node*) malloc(1 * sizeof(struct node));
+	if (top == NULL) {
+    	top = temp;
+        top-&gt;ptr = NULL;
+        top-&gt;info = data;
+    }
+    else {
+        temp-&gt;ptr = top;
+        temp-&gt;info = data;
+        top = temp;
+    }
+}
+
+void pop() {
+    struct node *temp = top;
+    if (temp == NULL) {
+        return;
+    }
+    else {
+    	temp = temp-&gt;ptr;
+	}
+    free(top);
+    top = temp;
+}
+
+void display() {
+    struct node *temp = top;
+    if (temp == NULL) {
+        printf("stack is empty\n");
+        return;
+    }
+    while (temp != NULL) {
+        printf("%d -&gt; ", temp-&gt;info);
+        temp = temp-&gt;ptr;
+    }
+    printf("NULL\n");
+}
+</code></pre></div></div>
+
+<p>Let’s test stack implementation by <code>gcc -o stack_app Main.c Stack.c</code> then <code>stack_app.exe</code> command.</p>
+
+<p><strong><code>Main.c</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include "Stack.h"
+
+int main() {
+    display();
+    push(4);
+    push(1);
+    push(6);
+    display();
+    pop();
+    display();
+    pop();
+    pop();
+    display();
+    push(11);
+    display();
+}
+</code></pre></div></div>
+
+<p><img src="/images/posts/native/c_console_output.png" alt="cconsoleoutput" title="c console output" /></p>
+
+<p><strong>Writing Java and Native Methods</strong></p>
+
+<p>Let’s create native methods in our Java class. JNI will be bridge
+between our Java codes and C native codes. Static code block will loads 
+native codes (we will create shared lib files later) from the file system into memory,
+so Stack class is able to use native methods when it needs.</p>
+
+<p><strong><code>Stack.java</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Stack {
+
+    static {
+        System.loadLibrary("native-stack");
+    }
+
+    public native void push(int val);
+
+    public native void pop();
+
+    public native void display();
+
+}
+</code></pre></div></div>
+
+<p>We will compile Stack class by using -h flag (<code>javac -h . Stack.java</code>), 
+so it will create Stack.h header
+file which includes all native method definitions.</p>
+
+<p><strong><code>Stack.h</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/* DO NOT EDIT THIS FILE - it is machine generated */
+#include &lt;jni.h&gt;
+/* Header for class Stack */
+
+#ifndef _Included_Stack
+#define _Included_Stack
+#ifdef __cplusplus
+extern "C" {
+#endif
+/*
+ * Class:     Stack
+ * Method:    push
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_Stack_push
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     Stack
+ * Method:    pop
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_Stack_pop
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     Stack
+ * Method:    display
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_Stack_display
+  (JNIEnv *, jobject);
+
+#ifdef __cplusplus
+}
+#endif
+#endif
+</code></pre></div></div>
+
+<p>We will create Stack.c file for native method implementation of<br />
+Stack.h file generated by compiler. We will use the contents of the Stack.c file 
+we created earlier. The only difference is that we will replace 
+the old method definitions with new ones in the new Stack.h file.</p>
+
+<p><strong><code>Stack.c</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include "Stack.h"
+
+struct node {
+    int info;
+    struct node *ptr;
+} *top;
+
+JNIEXPORT void JNICALL Java_Stack_push
+  (JNIEnv* env, jobject thisObject, jint val) {
+	struct node* temp = (struct node*) malloc(1 * sizeof(struct node));
+	if (top == NULL) {
+    	top = temp;
+        top-&gt;ptr = NULL;
+        top-&gt;info = val;
+    }
+    else {
+        temp-&gt;ptr = top;
+        temp-&gt;info = val;
+        top = temp;
+    }
+}
+
+JNIEXPORT void JNICALL Java_Stack_pop
+  (JNIEnv* env, jobject thisObject) {
+    struct node *temp = top;
+    if (temp == NULL) {
+        return;
+    }
+    else {
+    	temp = temp-&gt;ptr;
+	}
+    free(top);
+    top = temp;
+}
+
+JNIEXPORT void JNICALL Java_Stack_display
+  (JNIEnv* env, jobject thisObject) {
+	struct node *temp = top;
+    if (temp == NULL) {
+        printf("stack is empty\n");
+        return;
+    }
+    while (temp != NULL) {
+        printf("%d -&gt; ", temp-&gt;info);
+        temp = temp-&gt;ptr;
+    }
+    printf("NULL\n");
+}
+</code></pre></div></div>
+
+<p><strong>Compiling</strong></p>
+
+<p>Now, we will build our shared library (<strong>native-stack</strong>. remember static code block in java) from the C codes. The Stack.h file generated by compiler
+uses jni.h file. This file comes from JDK, and we will need to include this file when build shared library.</p>
+
+<p><img src="/images/posts/native/jdk_include_dir.png" alt="jdkjniheader" title="jdk jni header" /></p>
+
+<p><code>gcc -c -I%JAVA_HOME%\include -I%JAVA_HOME%\include\win32 Stack.c -o Stack.o</code></p>
+
+<p><code>gcc -shared native-stack.dll Stack.o -Wl,--add-stdcall-alias</code></p>
+
+<p>Let’s test our Stack Java class.</p>
+
+<p><strong><code>Main.java</code></strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class Main {
+
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+
+        stack.display();
+        stack.push(4);
+        stack.push(1);
+        stack.push(6);
+        stack.display();
+        stack.pop();
+        stack.display();
+        stack.pop();
+        stack.pop();
+        stack.display();
+        stack.push(11);
+        stack.display();
+
+        System.out.println("java program");
+    }
+
+}
+</code></pre></div></div>
+
+<p>Run Main class</p>
+
+<p><code>java -cp . -Djava.library.path=C:/libs/my-dll-path-dir Main.java</code></p>
+
+<p><img src="/images/posts/native/java_console_output.png" alt="javaconsoleoutput" title="java console output" /></p>
+
+
+  </section>
+  
+</article>
+
+
+
+      </div>
+
+      <footer class="footer">
+  <span class="footer__copyright">&copy; 2023 denizg. All rights reserved.</span>
+</footer>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/main.js?1681656674222981100"></script>
+
+
+    </div>
+  </body>
+</html>

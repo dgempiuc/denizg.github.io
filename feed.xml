@@ -5,9 +5,292 @@
     <description>Bilingual Blog: Turkish and English on Software and Life.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 15 Apr 2023 18:58:24 +0300</pubDate>
-    <lastBuildDate>Sat, 15 Apr 2023 18:58:24 +0300</lastBuildDate>
+    <pubDate>Sun, 16 Apr 2023 17:51:14 +0300</pubDate>
+    <lastBuildDate>Sun, 16 Apr 2023 17:51:14 +0300</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Run C program on Java</title>
+        <description>&lt;p&gt;I will make a confession. Although I am an OCA/OCP Java programmer, I just learned what native methods are.&lt;/p&gt;
+
+&lt;p&gt;One day, I wondered about the implementation of hashCode in the Object class and saw that it has no implementation and 
+it uses the native keyword. The native keyword specifies that a method is implemented in another language, not Java. 
+Platform dependent native code (compiled code) is dynamically called by Java and the result of these methods is returned to Java.
+This feature is called JNI (Java Native Interface). So somewhere in the JVM, 
+there is a hashCode code written in non-Java language (probably C/C++).
+So I will try to write C code and run it in Java.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Writing C&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I will implement stack in the sample C program. This program will
+includes 2 parts; &lt;strong&gt;&lt;em&gt;stack header file&lt;/em&gt;&lt;/strong&gt; which includes method definitions, &lt;strong&gt;&lt;em&gt;stack c file&lt;/em&gt;&lt;/strong&gt;
+which includes header implementation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Stack.h&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#ifndef STACK_H_
+#define STACK_H_
+
+void push(int data);
+void pop();
+void display();
+
+#endif
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Stack.c&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &quot;Stack.h&quot;
+
+struct node {
+    int info;
+    struct node *ptr;
+} *top;
+
+void push(int data) {
+    struct node* temp = (struct node*) malloc(1 * sizeof(struct node));
+	if (top == NULL) {
+    	top = temp;
+        top-&amp;gt;ptr = NULL;
+        top-&amp;gt;info = data;
+    }
+    else {
+        temp-&amp;gt;ptr = top;
+        temp-&amp;gt;info = data;
+        top = temp;
+    }
+}
+
+void pop() {
+    struct node *temp = top;
+    if (temp == NULL) {
+        return;
+    }
+    else {
+    	temp = temp-&amp;gt;ptr;
+	}
+    free(top);
+    top = temp;
+}
+
+void display() {
+    struct node *temp = top;
+    if (temp == NULL) {
+        printf(&quot;stack is empty\n&quot;);
+        return;
+    }
+    while (temp != NULL) {
+        printf(&quot;%d -&amp;gt; &quot;, temp-&amp;gt;info);
+        temp = temp-&amp;gt;ptr;
+    }
+    printf(&quot;NULL\n&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s test stack implementation by &lt;code&gt;gcc -o stack_app Main.c Stack.c&lt;/code&gt; then &lt;code&gt;stack_app.exe&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Main.c&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &quot;Stack.h&quot;
+
+int main() {
+    display();
+    push(4);
+    push(1);
+    push(6);
+    display();
+    pop();
+    display();
+    pop();
+    pop();
+    display();
+    push(11);
+    display();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/native/c_console_output.png&quot; alt=&quot;cconsoleoutput&quot; title=&quot;c console output&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Writing Java and Native Methods&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s create native methods in our Java class. JNI will be bridge
+between our Java codes and C native codes. Static code block will loads 
+native codes (we will create shared lib files later) from the file system into memory,
+so Stack class is able to use native methods when it needs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Stack.java&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Stack {
+
+    static {
+        System.loadLibrary(&quot;native-stack&quot;);
+    }
+
+    public native void push(int val);
+
+    public native void pop();
+
+    public native void display();
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We will compile Stack class by using -h flag (&lt;code&gt;javac -h . Stack.java&lt;/code&gt;), 
+so it will create Stack.h header
+file which includes all native method definitions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Stack.h&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/* DO NOT EDIT THIS FILE - it is machine generated */
+#include &amp;lt;jni.h&amp;gt;
+/* Header for class Stack */
+
+#ifndef _Included_Stack
+#define _Included_Stack
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+/*
+ * Class:     Stack
+ * Method:    push
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_Stack_push
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     Stack
+ * Method:    pop
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_Stack_pop
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     Stack
+ * Method:    display
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_Stack_display
+  (JNIEnv *, jobject);
+
+#ifdef __cplusplus
+}
+#endif
+#endif
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We will create Stack.c file for native method implementation of&lt;br /&gt;
+Stack.h file generated by compiler. We will use the contents of the Stack.c file 
+we created earlier. The only difference is that we will replace 
+the old method definitions with new ones in the new Stack.h file.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Stack.c&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &quot;Stack.h&quot;
+
+struct node {
+    int info;
+    struct node *ptr;
+} *top;
+
+JNIEXPORT void JNICALL Java_Stack_push
+  (JNIEnv* env, jobject thisObject, jint val) {
+	struct node* temp = (struct node*) malloc(1 * sizeof(struct node));
+	if (top == NULL) {
+    	top = temp;
+        top-&amp;gt;ptr = NULL;
+        top-&amp;gt;info = val;
+    }
+    else {
+        temp-&amp;gt;ptr = top;
+        temp-&amp;gt;info = val;
+        top = temp;
+    }
+}
+
+JNIEXPORT void JNICALL Java_Stack_pop
+  (JNIEnv* env, jobject thisObject) {
+    struct node *temp = top;
+    if (temp == NULL) {
+        return;
+    }
+    else {
+    	temp = temp-&amp;gt;ptr;
+	}
+    free(top);
+    top = temp;
+}
+
+JNIEXPORT void JNICALL Java_Stack_display
+  (JNIEnv* env, jobject thisObject) {
+	struct node *temp = top;
+    if (temp == NULL) {
+        printf(&quot;stack is empty\n&quot;);
+        return;
+    }
+    while (temp != NULL) {
+        printf(&quot;%d -&amp;gt; &quot;, temp-&amp;gt;info);
+        temp = temp-&amp;gt;ptr;
+    }
+    printf(&quot;NULL\n&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Compiling&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, we will build our shared library (&lt;strong&gt;native-stack&lt;/strong&gt;. remember static code block in java) from the C codes. The Stack.h file generated by compiler
+uses jni.h file. This file comes from JDK, and we will need to include this file when build shared library.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/native/jdk_include_dir.png&quot; alt=&quot;jdkjniheader&quot; title=&quot;jdk jni header&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;gcc -c -I%JAVA_HOME%\include -I%JAVA_HOME%\include\win32 Stack.c -o Stack.o&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;gcc -shared native-stack.dll Stack.o -Wl,--add-stdcall-alias&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s test our Stack Java class.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;Main.java&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public class Main {
+
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+
+        stack.display();
+        stack.push(4);
+        stack.push(1);
+        stack.push(6);
+        stack.display();
+        stack.pop();
+        stack.display();
+        stack.pop();
+        stack.pop();
+        stack.display();
+        stack.push(11);
+        stack.display();
+
+        System.out.println(&quot;java program&quot;);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Run Main class&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;java -cp . -Djava.library.path=C:/libs/my-dll-path-dir Main.java&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/native/java_console_output.png&quot; alt=&quot;javaconsoleoutput&quot; title=&quot;java console output&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 16 Apr 2023 17:33:00 +0300</pubDate>
+        <link>http://localhost:4000/2023/run-c-program-on-java/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/run-c-program-on-java/</guid>
+        
+        <category>programming</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Londra Seyahatnamesi [TR]</title>
@@ -898,35 +1181,6 @@ So? Docker toolbox creates virtual machine and run on it. It actually uses virtu
         <pubDate>Mon, 05 Aug 2019 18:04:23 +0300</pubDate>
         <link>http://localhost:4000/2019/docker-and-vm-at-windows-10/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/docker-and-vm-at-windows-10/</guid>
-        
-        <category>software</category>
-        
-        
-        <category>software</category>
-        
-      </item>
-    
-      <item>
-        <title>curl -GET vs -XGET</title>
-        <description>&lt;p&gt;You maybe realize that there are some requests like -GET and -XGET if you use curl. It creates the complexity about using http methods.
-Do I need to use XGET or GET? The question is simple.&lt;/p&gt;
-
-&lt;p&gt;There are some supported http methods, but for example there is no delete which used many of us.
-If you type like “curl -DELETE”, it sends GET request. To address this problem, you will predefined -X before your method name like -XDELETE.&lt;/p&gt;
-
-&lt;p&gt;This style says curl that “hey man, I want to make request with exactly this method even if you don’t support this. Don’t change it.”
-So, curl configures the method name behind the -X option. In this perspective, there is no difference between -GET and -XGET because curl supports GET request.&lt;/p&gt;
-
-&lt;p&gt;There is a sample rest api for testing purpose in internet. You can visit it from  &lt;a href=&quot;https://reqres.in/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;curl -DELETE https://reqres.in/api/users/2 =&amp;gt; it uses “get single user api” (GET /api/users/2)&lt;/p&gt;
-
-&lt;p&gt;curl -XDELETE https://reqres.in/api/users/2 =&amp;gt; it works as expected.&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 22 May 2019 18:04:23 +0300</pubDate>
-        <link>http://localhost:4000/2019/curl-xget-vs-get/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/curl-xget-vs-get/</guid>
         
         <category>software</category>
         
